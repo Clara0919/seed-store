@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container-bg">
+    <div class="PageHeader"><PageHeader></PageHeader></div>
+    <div class="main">
+      <HomePage></HomePage>
+    </div>
+    <Pagefooter></Pagefooter>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PageHeader from "./components/PageHeader.vue";
+import HomePage from "./components/HomePage.vue";
+import Pagefooter from "./components/Pagefooter.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PageHeader,
+    HomePage,
+    Pagefooter,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+:root {
+  --main-color1: #fffbe9;
+  --main-color2: #ffeea9;
+  --main-color3: #32413a;
+  --main-color4: #f5cf38;
+  --main-color5: #5d8974;
+}
+.PageHeader {
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+}
+.container-bg {
+  background-color: var(--main-color1);
 }
 </style>
