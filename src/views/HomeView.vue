@@ -59,69 +59,74 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-11 d-flex justify-content-center p-0">
+        <div class="col-11">
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p></p>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <router-link to="/product-detail">
+                <div class="product-card">
+                  <div class="card-img"></div>
+                  <div class="card-info">
+                    <p class="tag">蔬菜</p>
+                    <h3>辣椒</h3>
+                    <p class="price"><b>NT$ 255</b></p>
+                    <button>加入購物車</button>
+                  </div>
+                </div>
+              </router-link>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
@@ -139,69 +144,73 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-11 d-flex justify-content-center p-0">
+        <div class="col-11">
           <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p></p>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p></p>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
               <div class="product-card">
                 <div class="card-img"></div>
                 <div class="card-info">
+                  <p class="tag">蔬菜</p>
                   <h3>辣椒</h3>
-                  <p>
-                    辣椒是辣椒屬植物果實的泛稱。其中最常見的普通辣椒擁有許多人工栽培品種及變種，如菜椒和朝天椒等等。
-                  </p>
-                  <span class="price"><b>$ 255</b></span>
+                  <p class="price"><b>NT$ 255</b></p>
+                  <button>加入購物車</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="product-card">
+                <div class="card-img"></div>
+                <div class="card-info">
+                  <p class="tag">蔬菜</p>
+                  <h3>辣椒</h3>
+                  <p class="price"><b>NT$ 255</b></p>
                   <button>加入購物車</button>
                 </div>
               </div>
@@ -225,31 +234,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  mounted() {
-    let panels = document.querySelectorAll(".panel");
-
-    panels.forEach((panel) => {
-      panel.addEventListener("click", () => {
-        removeActionClasses();
-        panel.classList.add("active");
-      });
-    });
-
-    function removeActionClasses() {
-      panels.forEach((panel) => {
-        panel.classList.remove("active");
-      });
-    }
-  },
-};
-</script>
-
 <style scoped>
 * {
   box-sizing: border-box;
   /* outline: solid 1px red; */
+  color: var(--main-color3);
+  text-decoration: none;
 }
 
 .container-fluid {
@@ -385,10 +375,12 @@ export default {
   padding: 0px;
   background-color: white;
   margin-top: 35px;
+  border: 1px solid var(--main-color4);
+  border-radius: 10px;
 }
 .card-img {
   background-image: url("https://images.unsplash.com/photo-1581264542935-745d77881a2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
-  max-width: 100%;
+  width: 100%;
   height: 200px;
   background-position: center center;
   border-radius: 10px 10px 0 0;
@@ -398,20 +390,28 @@ export default {
   border-radius: 0 0 10px 10px;
 }
 .card-info h3 {
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-weight: 400;
 }
 .card-info .price b {
   font-size: 20px;
   color: var(--main-color3);
 }
 .card-info button {
-  float: right;
   border: 0;
   border-radius: 5px;
   background-color: var(--main-color4);
-  font-size: 15px;
+  font-size: 18px;
   color: white;
-  padding: 4px 12px;
+  padding: 8px 12px;
+  width: 100%;
+}
+
+.card-info .tag {
+  font-size: 15px;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 
 /* 新會員優惠 */
@@ -436,7 +436,7 @@ export default {
 .coupon-info {
   background-color: rgba(255, 255, 255, 0.4);
   color: var(--main-color3);
-  padding: 50px 100px;
+  padding: 80px 130px;
   border-radius: 10px;
   backdrop-filter: blur(5px);
 }
@@ -446,9 +446,35 @@ export default {
 }
 .coupon button {
   padding: 10px 20px;
+  max-width: 100%;
   border-radius: 3px;
   border: 0;
   background-color: var(--main-color4);
   color: white;
 }
 </style>
+
+<script>
+// @ is an alias to /src
+
+export default {
+  name: "HomeView",
+
+  mounted() {
+    let panels = document.querySelectorAll(".panel");
+
+    panels.forEach((panel) => {
+      panel.addEventListener("click", () => {
+        removeActionClasses();
+        panel.classList.add("active");
+      });
+    });
+
+    function removeActionClasses() {
+      panels.forEach((panel) => {
+        panel.classList.remove("active");
+      });
+    }
+  },
+};
+</script>

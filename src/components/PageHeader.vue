@@ -27,22 +27,36 @@
         </div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">首頁</a>
+            <router-link to="/">
+              <a class="nav-link active" aria-current="page"
+                >首頁</a
+              ></router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">蔬菜</a>
+            <router-link to="/selected-category"
+              ><a class="nav-link">蔬菜</a></router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">水果</a>
+            <router-link to="/selected-category"
+              ><a class="nav-link">水果</a></router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">花卉</a>
+            <router-link to="/selected-category">
+              <a class="nav-link">花卉</a></router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">香草</a>
+            <router-link to="/selected-category"
+              ><a class="nav-link">香草</a></router-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">園藝工具</a>
+            <router-link to="/selected-category">
+              <a class="nav-link">園藝工具</a></router-link
+            >
           </li>
         </ul>
       </div>

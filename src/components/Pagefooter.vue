@@ -11,7 +11,6 @@ export default {};
 .footer {
   background-color: var(--main-color2);
   height: 70px;
-  margin-top: 50px;
   padding: 15px 0;
 }
 .footer p {
