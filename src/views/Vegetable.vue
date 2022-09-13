@@ -100,12 +100,16 @@
     </div>
   </div>
 </template>
-<script>
+  <script>
 export default {
-  
+  mounted() {
+    this.axios.get("/products").then((response) => {
+      console.log(response);
+    });
+  },
 };
 </script>
-<style scoped>
+  <style scoped>
 .banner {
   background-image: url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
   width: 100%;
