@@ -59,79 +59,8 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-11">
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p></p>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <router-link to="/product-detail">
-                <div class="product-card">
-                  <div class="card-img"></div>
-                  <div class="card-info">
-                    <p class="tag">蔬菜</p>
-                    <h3>辣椒</h3>
-                    <p class="price"><b>NT$ 255</b></p>
-                    <button>加入購物車</button>
-                  </div>
-                </div>
-              </router-link>
-            </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-11 slick">
+          <slick></slick>
         </div>
       </div>
     </div>
@@ -144,78 +73,8 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-11">
-          <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p></p>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p></p>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-              <div class="product-card">
-                <div class="card-img"></div>
-                <div class="card-info">
-                  <p class="tag">蔬菜</p>
-                  <h3>辣椒</h3>
-                  <p class="price"><b>NT$ 255</b></p>
-                  <button>加入購物車</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-11 slick">
+          <slick></slick>
         </div>
       </div>
     </div>
@@ -370,13 +229,24 @@
   margin: 100px 0 0 0;
 }
 
+/* slick  */
+.slick {
+  margin-top: 30px;
+}
+
 /* 商品卡片 */
 .product-card {
   padding: 0px;
   background-color: white;
-  margin-top: 35px;
-  border: 1px solid var(--main-color4);
+  border: 0.5px solid var(--main-color4);
   border-radius: 10px;
+}
+.product-card:hover {
+  box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: -10px;
 }
 .card-img {
   background-image: url("https://images.unsplash.com/photo-1581264542935-745d77881a2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
@@ -399,13 +269,20 @@
   color: var(--main-color3);
 }
 .card-info button {
-  border: 0;
+  border: 2px solid var(--main-color4);
+  background: none;
   border-radius: 5px;
-  background-color: var(--main-color4);
   font-size: 18px;
-  color: white;
-  padding: 8px 12px;
+  color: var(--main-color4);
   width: 100%;
+  padding: 8px 12px;
+  max-width: 100%;
+  word-wrap: none;
+}
+
+.card-info button:hover {
+  background-color: var(--main-color4);
+  color: white;
 }
 
 .card-info .tag {
@@ -423,7 +300,7 @@
   max-width: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin: 50px 0px;
+  margin: 100px 0 50px;
   background-clip: content-box;
   /* 讓背景不要 overflow 到左右 12px 的 padding 上 */
   border-radius: 10px;
@@ -456,7 +333,7 @@
 
 <script>
 // @ is an alias to /src
-
+import slick from "../components/slick.vue";
 export default {
   name: "HomeView",
 
@@ -476,5 +353,6 @@ export default {
       });
     }
   },
+  components: { slick },
 };
 </script>

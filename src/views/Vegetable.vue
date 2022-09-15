@@ -28,73 +28,27 @@
         <h3># 蔬菜</h3>
       </div>
       <div class="col-11">
-        <div class="row gy-4">
-          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <div class="product-card">
-              <div class="card-img"></div>
-              <div class="card-info">
-                <p class="tag">蔬菜</p>
-                <h3>辣椒</h3>
-                <p class="price"><b>NT$ 255</b></p>
-                <button>加入購物車</button>
+        <div class="row gy-4 gx-5">
+          <template v-for="product in products" :key="product.id">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="product-card">
+                <div
+                  class="card-img"
+                  v-bind:style="{ backgroundImage: `url(${product.img1})` }"
+                ></div>
+                <div class="card-info">
+                  <p class="tag"># {{ product.category }}</p>
+                  <h3>{{ product.title }}</h3>
+                  <p class="price">
+                    <b>NT$ {{ product.price }}</b>
+                  </p>
+                  <button>
+                    <i class="fa-solid fa-cart-plus"></i> 加入購物車
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <div class="product-card">
-              <div class="card-img"></div>
-              <div class="card-info">
-                <p class="tag">蔬菜</p>
-                <h3>辣椒</h3>
-                <p class="price"><b>NT$ 255</b></p>
-                <button>加入購物車</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <div class="product-card">
-              <div class="card-img"></div>
-              <div class="card-info">
-                <p class="tag">蔬菜</p>
-                <h3>辣椒</h3>
-                <p class="price"><b>NT$ 255</b></p>
-                <button>加入購物車</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <div class="product-card">
-              <div class="card-img"></div>
-              <div class="card-info">
-                <p class="tag">蔬菜</p>
-                <h3>辣椒</h3>
-                <p class="price"><b>NT$ 255</b></p>
-                <button>加入購物車</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <div class="product-card">
-              <div class="card-img"></div>
-              <div class="card-info">
-                <p class="tag">蔬菜</p>
-                <h3>辣椒</h3>
-                <p class="price"><b>NT$ 255</b></p>
-                <button>加入購物車</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-            <div class="product-card">
-              <div class="card-img"></div>
-              <div class="card-info">
-                <p class="tag">蔬菜</p>
-                <h3>辣椒</h3>
-                <p class="price"><b>NT$ 255</b></p>
-                <button>加入購物車</button>
-              </div>
-            </div>
-          </div>
+          </template>
         </div>
       </div>
     </div>
@@ -102,9 +56,15 @@
 </template>
   <script>
 export default {
+  data() {
+    return {
+      products: [],
+    };
+  },
   mounted() {
     this.axios.get("/products").then((response) => {
       console.log(response);
+      this.products = response.data.data;
     });
   },
 };
@@ -129,38 +89,53 @@ export default {
 .product-card {
   padding: 0px;
   background-color: white;
-  border: 1px solid var(--main-color4);
+  border: 0.5px solid var(--main-color4);
   border-radius: 10px;
+}
+.product-card:hover {
+  box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: -10px;
 }
 .card-img {
   background-image: url("https://images.unsplash.com/photo-1581264542935-745d77881a2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
   width: 100%;
   height: 200px;
+  background-size: cover;
   background-position: center center;
   border-radius: 10px 10px 0 0;
 }
 .card-info {
-  padding: 5px 15px 30px 15px;
+  padding: 5px 25px 30px 25px;
   border-radius: 0 0 10px 10px;
 }
 .card-info h3 {
   margin-top: 5px;
   margin-bottom: 15px;
   font-weight: 400;
+  font-size: 25px;
 }
 .card-info .price b {
   font-size: 20px;
   color: var(--main-color3);
 }
 .card-info button {
-  border: 0;
+  border: 2px solid var(--main-color4);
+  background: none;
   border-radius: 5px;
-  background-color: var(--main-color4);
   font-size: 18px;
-  color: white;
+  color: var(--main-color4);
+  width: 100%;
   padding: 8px 12px;
   max-width: 100%;
   word-wrap: none;
+}
+
+.card-info button:hover {
+  background-color: var(--main-color4);
+  color: white;
 }
 
 .card-info .tag {
