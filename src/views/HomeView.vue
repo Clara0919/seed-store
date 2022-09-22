@@ -60,7 +60,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-11 slick">
-          <slick></slick>
+          <slickBeginner></slickBeginner>
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-11 slick">
-          <slick></slick>
+          <slickFlower></slickFlower>
         </div>
       </div>
     </div>
@@ -333,7 +333,8 @@
 
 <script>
 // @ is an alias to /src
-import slick from "../components/slick.vue";
+import slickBeginner from "../components/slickBeginner.vue";
+import slickFlower from "../components/slickFlower.vue";
 export default {
   name: "HomeView",
 
@@ -353,6 +354,6 @@ export default {
       });
     }
   },
-  components: { slick },
+  components: { slickBeginner, slickFlower },
 };
 </script>
