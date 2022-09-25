@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ProductDetailView from '../views/ProductDetailView.vue'
+import Home from '../views/HomeView.vue'
+import ProductDetail from '../views/ProductDetailView.vue'
 import SelectedCategory from '../views/SelectedCategory.vue'
 import Vegetable from '../views/Vegetable.vue'
+import Login from '../views/LoginView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'homeView',
+    component: Home
   },
   {
     path: '/selected-category',
@@ -17,14 +18,19 @@ const routes = [
   },
   {
     path: '/vegetable',
-    name: 'vegetable',
+    name: 'Vegetable',
     component: Vegetable
   },
   {
     path: '/product-detail',
     name: 'ProductDetailView',
-    component: ProductDetailView
+    component: ProductDetail
   },
+  {
+    path: '/login',
+    name: 'LoginView',
+    component: Login
+  }
 
 
 ]

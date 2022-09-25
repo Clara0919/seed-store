@@ -60,6 +60,7 @@
           </li>
         </ul>
       </div>
+      <!-- 搜尋欄 -->
       <div class="navbar-function">
         <div class="search">
           <input type="search" placeholder="請輸入作物名稱" />
@@ -67,11 +68,15 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
+        <!-- 購物車 -->
         <span class="navbar-text">
           <i class="fa-solid fa-cart-shopping"></i>
         </span>
+        <!-- 登入 -->
         <span class="navbar-text">
-          <i class="fa-solid fa-user"></i>
+          <router-link to="/login"
+            ><i class="fa-solid fa-user"></i
+          ></router-link>
         </span>
       </div>
     </div>
