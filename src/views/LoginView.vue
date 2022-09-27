@@ -5,24 +5,27 @@
         <div class="logo">
           <img src="../assets/logo.png" alt="" />
         </div>
-        <div class="login">
+
+        <form method="POST" class="login" @submit.prevent="postLogin()">
           <div class="form-floating mb-3">
             <input
               type="email"
               class="form-control"
               id="floatingInput"
-              placeholder="name@example.com"
+              placeHolder="name123@gmail.com"
+              v-model="email"
             />
-            <label for="floatingInput">Email address</label>
+            <label for="floatingInput">帳號（電子信箱）</label>
           </div>
           <div class="form-floating">
             <input
               type="password"
               class="form-control"
               id="floatingPassword"
-              placeholder="Password"
+              placeHolder="12345"
+              v-model="password"
             />
-            <label for="floatingPassword">Password</label>
+            <label for="floatingPassword">密碼</label>
           </div>
           <div class="extraService">
             <div class="group">
@@ -31,21 +34,54 @@
             </div>
             <p>忘記密碼？</p>
           </div>
-          <button>登入</button>
+          <button type="submit">登入</button>
           <div class="signUp">
             <p>尚未註冊？點擊加入新會員</p>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  methods: {
+    postLogin() {
+      this.axios
+        .post("/login", {
+          email: this.email,
+          password: this.password,
+        })
+        .then((response) => {
+          //console.log(response.data.loginSuccess); 0
+          if (response.data.loginSuccess === 0) {
+            alert("登入成功");
+            return this.$router.push("/");
+          } else if (response.data.loginSuccess === 1) {
+            alert("此帳號未註冊");
+            return this.$router.push("/login");
+          }
+          alert("密碼錯誤");
+          return this.$router.push("/login");
+        })
+        .catch((err) => {
+          console.log("err" + err.message);
+        });
+    },
+    redirect() {},
+  },
+  mounted() {},
+};
 </script>
 <style scoped>
 .login-page {
-  height: 70vh;
+  height: 75vh;
 }
 .logo img {
   max-width: 100%;
