@@ -4,6 +4,7 @@ import ProductDetail from '../views/ProductDetailView.vue'
 import SelectedCategory from '../views/SelectedCategory.vue'
 import Vegetable from '../views/Vegetable.vue'
 import Login from '../views/LoginView.vue'
+import SignUp from '../views/SignUpView.vue'
 
 const routes = [
   {
@@ -30,9 +31,12 @@ const routes = [
     path: '/login',
     name: 'LoginView',
     component: Login
+  },
+  {
+    path: '/signup',
+    name: 'SignUpView',
+    component: SignUp
   }
-
-
 ]
 
 const router = createRouter({
