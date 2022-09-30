@@ -36,7 +36,9 @@
           </div>
           <button type="submit">登入</button>
           <div class="signUp">
-            <p>尚未註冊？點擊加入新會員</p>
+            <router-link to="/signup"
+              ><p>尚未註冊？點擊加入新會員</p></router-link
+            >
           </div>
         </form>
       </div>
