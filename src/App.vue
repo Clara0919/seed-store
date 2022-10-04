@@ -35,5 +35,11 @@ export default {
     PageHeader,
     Pagefooter,
   },
+  data() {
+    return {
+      username: "",
+    };
+  },
+  mounted() {},
 };
 </script>

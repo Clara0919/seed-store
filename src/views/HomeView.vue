@@ -353,6 +353,10 @@ export default {
         panel.classList.remove("active");
       });
     }
+
+    this.axios.get("/loginInfo").then((res) => {
+      console.log(res);
+    });
   },
   components: { slickBeginner, slickFlower },
 };

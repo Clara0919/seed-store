@@ -63,7 +63,7 @@ export default {
   },
   mounted() {
     this.axios.get("/products").then((response) => {
-      console.log(response);
+      // console.log(response);
       this.products = response.data.data;
     });
   },

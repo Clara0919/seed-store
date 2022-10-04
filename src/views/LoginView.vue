@@ -68,15 +68,25 @@ export default {
           } else if (response.data.loginSuccess === 1) {
             alert("此帳號未註冊");
             return this.$router.push("/login");
+          } else {
+            alert("密碼錯誤");
+            return this.$router.push("/login");
           }
-          alert("密碼錯誤");
-          return this.$router.push("/login");
         })
         .catch((err) => {
           console.log("err" + err.message);
         });
     },
-    redirect() {},
+    postLogout() {
+      this.axios.post("/logout", (req, res) => {
+        if (res.locals.isLogin === false) {
+          alert("登出成功");
+          this.$router.push("/");
+        } else {
+          console.log(err.message);
+        }
+      });
+    },
   },
   mounted() {},
 };

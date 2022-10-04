@@ -38,7 +38,7 @@ export default {
       </div>
     `
           );
-          console.log(element);
+          // console.log(element);
         });
       })
       .then(() => {

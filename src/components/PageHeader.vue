@@ -72,18 +72,38 @@
         <span class="navbar-text">
           <i class="fa-solid fa-cart-shopping"></i>
         </span>
-        <!-- 登入 -->
+        <!--未登入情況下 登入｜註冊 -->
         <span class="navbar-text">
-          <router-link to="/login"
-            ><i class="fa-solid fa-user"></i
-          ></router-link>
+          <!--  v-if="LoginStatus === false" -->
+          <router-link to="/login">登入</router-link>
+          <span>|</span>
+          <router-link to="/signup">註冊</router-link>
+        </span>
+        <!--登入情況下 username｜登出 -->
+        <span class="navbar-text">
+          <!-- v-if="LoginStatus === true" -->
+          <router-link to="/login">username</router-link>
+          <span>|</span>
+          <router-link to="/signup">登出</router-link>
         </span>
       </div>
     </div>
   </nav>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      // username: "",
+    };
+  },
+  methods: {},
+  mounted() {
+    // this.axios.get("/loginInfo").then((res) => {
+    //   console.log(session);
+    // });
+  },
+};
 </script>
 <style scoped>
 * {
