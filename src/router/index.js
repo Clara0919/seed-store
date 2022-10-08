@@ -5,6 +5,7 @@ import SelectedCategory from '../views/SelectedCategory.vue'
 import Vegetable from '../views/Vegetable.vue'
 import Login from '../views/LoginView.vue'
 import SignUp from '../views/SignUpView.vue'
+import shopCart from '../views/shopCart.vue'
 
 const routes = [
   {
@@ -37,7 +38,14 @@ const routes = [
     name: 'SignUpView',
     component: SignUp
   }
+  , {
+    path: '/shopCart',
+    name: 'shopCart',
+    component: shopCart
+
+  }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
