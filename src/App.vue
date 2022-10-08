@@ -1,11 +1,17 @@
 <template>
-  <div class="PageHeader">
-    <PageHeader></PageHeader>
-  </div>
-  <div class="container-bg"><router-view /></div>
+  <div class="wholePage">
+    <div class="PageHeader">
+      <PageHeader :user="name" :loginStatus="loginStatus"></PageHeader>
+    </div>
 
-  <pagefooter></pagefooter>
+    <div class="container-bg"><router-view /></div>
+
+    <div class="PageFooter">
+      <pagefooter></pagefooter>
+    </div>
+  </div>
 </template>
+
 
 <style>
 :root {
@@ -15,6 +21,7 @@
   --main-color4: #f5cf38;
   --main-color5: #5d8974;
 }
+
 .PageHeader {
   position: sticky;
   top: 0px;
@@ -23,6 +30,11 @@
 .container-bg {
   background-color: var(--main-color1);
   padding-bottom: 30px;
+}
+
+.PageFooter {
+  position: relative;
+  bottom: 0px;
 }
 </style>
 
@@ -37,9 +49,17 @@ export default {
   },
   data() {
     return {
-      username: "",
+      name: "",
+      loginStatus: "",
     };
   },
-  mounted() {},
+  mounted() {
+    this.axios.get("/getInfo").then((res) => {
+      console.log(res);
+      this.name = res.data.user;
+      this.loginStatus = res.data.isLogin;
+      // console.log(this.name);
+    });
+  },
 };
 </script>

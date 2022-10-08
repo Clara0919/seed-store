@@ -354,9 +354,7 @@ export default {
       });
     }
 
-    this.axios.get("/loginInfo").then((res) => {
-      console.log(res);
-    });
+    
   },
   components: { slickBeginner, slickFlower },
 };

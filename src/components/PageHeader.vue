@@ -34,7 +34,7 @@
             >
           </li>
           <li class="nav-item">
-            <router-link to="/selected-category"
+            <router-link to="/vegetable"
               ><a class="nav-link">蔬菜</a></router-link
             >
           </li>
@@ -72,19 +72,20 @@
         <span class="navbar-text">
           <i class="fa-solid fa-cart-shopping"></i>
         </span>
+
+        <!--登入情況下 username｜登出 -->
+        <span class="navbar-text" v-if="loginStatus === true">
+          <!--  -->
+          <router-link to="/login"> {{ user }} </router-link>
+          <span class="line">|</span>
+          <a href="" @click="logout">登出</a>
+        </span>
         <!--未登入情況下 登入｜註冊 -->
-        <span class="navbar-text">
+        <span class="navbar-text" v-else>
           <!--  v-if="LoginStatus === false" -->
           <router-link to="/login">登入</router-link>
-          <span>|</span>
+          <span class="line">|</span>
           <router-link to="/signup">註冊</router-link>
-        </span>
-        <!--登入情況下 username｜登出 -->
-        <span class="navbar-text">
-          <!-- v-if="LoginStatus === true" -->
-          <router-link to="/login">username</router-link>
-          <span>|</span>
-          <router-link to="/signup">登出</router-link>
         </span>
       </div>
     </div>
@@ -92,17 +93,20 @@
 </template>
 <script>
 export default {
+  props: ["user", "loginStatus"],
   data() {
-    return {
-      // username: "",
-    };
+    return {};
   },
-  methods: {},
-  mounted() {
-    // this.axios.get("/loginInfo").then((res) => {
-    //   console.log(session);
-    // });
+  methods: {
+    logout() {
+      this.axios.get("/logout", (req, res) => {
+        alert("登出成功");
+        this.$router.push("/");
+        // window.location.reload();
+      });
+    },
   },
+  mounted() {},
 };
 </script>
 <style scoped>
@@ -165,12 +169,16 @@ nav {
 }
 
 .navbar-function .navbar-text i {
-  margin: 0 15px;
+  margin: 0 30px 0 0px;
   color: var(--main-color3) !important;
 }
 
 .navbar-function {
   display: flex;
   justify-content: flex-end;
+}
+
+.line {
+  margin: 0 10px;
 }
 </style>

@@ -92,9 +92,6 @@ export default {
 };
 </script>
 <style scoped>
-.login-page {
-  height: 75vh;
-}
 .logo img {
   max-width: 100%;
   padding: 0 40px;
