@@ -338,6 +338,12 @@ import slickFlower from "../components/slickFlower.vue";
 export default {
   name: "HomeView",
 
+  data() {
+    return {
+      products: [],
+    };
+  },
+
   mounted() {
     let panels = document.querySelectorAll(".panel");
 
@@ -354,7 +360,12 @@ export default {
       });
     }
 
-    
+    this.axios.get("/products").then((res) => {
+      this.products = res.data.data;
+      //存進localStorage
+      localStorage.setItem("products", JSON.stringify(this.products));
+      //JSON.stringify 把物件或值轉成 json 格式
+    });
   },
   components: { slickBeginner, slickFlower },
 };

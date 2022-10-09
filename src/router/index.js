@@ -3,6 +3,9 @@ import Home from '../views/HomeView.vue'
 import ProductDetail from '../views/ProductDetailView.vue'
 import SelectedCategory from '../views/SelectedCategory.vue'
 import Vegetable from '../views/Vegetable.vue'
+import Fruit from '../views/Fruit.vue'
+import Herb from '../views/Herb.vue'
+import Flower from '../views/Flower.vue'
 import Login from '../views/LoginView.vue'
 import SignUp from '../views/SignUpView.vue'
 import shopCart from '../views/shopCart.vue'
@@ -24,7 +27,22 @@ const routes = [
     component: Vegetable
   },
   {
-    path: '/product-detail',
+    path: '/flower',
+    name: 'Flower',
+    component: Flower
+  },
+  {
+    path: '/fruit',
+    name: 'Fruit',
+    component: Fruit
+  },
+  {
+    path: '/herb',
+    name: 'Herb',
+    component: Herb
+  },
+  {
+    path: '/product/:productId',
     name: 'ProductDetailView',
     component: ProductDetail
   },

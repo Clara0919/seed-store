@@ -25,7 +25,7 @@
   <div class="container-fluid" style="min-height: 70vh">
     <div class="row d-flex justify-content-center mt-3">
       <div class="col-11 py-3">
-        <h3># 蔬菜</h3>
+        <h3># 水果</h3>
       </div>
       <div class="col-11">
         <div class="row gy-4 gx-5">
@@ -38,12 +38,12 @@
                 ></div>
                 <div class="card-info">
                   <router-link :to="`/product/${product.id}`">
-                    <p class="tag"># {{ product.category }}</p>
-                    <h3>{{ product.title }}</h3>
-                    <p class="price">
-                      <b>NT$ {{ product.price }}</b>
-                    </p>
-                  </router-link>
+                  <p class="tag"># {{ product.category }}</p>
+                  <h3>{{ product.title }}</h3>
+                  <p class="price">
+                    <b>NT$ {{ product.price }}</b>
+                  </p>
+                </router-link>
                   <button>
                     <i class="fa-solid fa-cart-plus"></i> 加入購物車
                   </button>
@@ -64,16 +64,10 @@ export default {
     };
   },
   mounted() {
-    // this.axios.get("/products").then((response) => {
-    //   this.products = response.data.data.filter((item) => {
-    //     return item.category === "蔬菜";
-    //   });
-    // });
-
     this.products = JSON.parse(localStorage.getItem("products")).filter(
       //JSON.parse 把 json 轉換為物件或值
       (item) => {
-        return item.category === "蔬菜";
+        return item.category === "水果";
       }
     );
   },

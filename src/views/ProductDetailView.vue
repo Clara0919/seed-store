@@ -5,8 +5,12 @@
       <div class="col-10">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <router-link to="/">首頁</router-link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ category }}
+            </li>
           </ol>
         </nav>
       </div>
@@ -23,25 +27,13 @@
         >
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img
-                src="https://www.farmersalmanac.com/wp-content/uploads/2022/05/Poppyy-1200x900-1-840x630.jpeg"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img :src="img1" class="d-block w-100" alt="..." />
             </div>
             <div class="carousel-item">
-              <img
-                src="https://www.mygarden.com/sites/default/files/styles/discover_16x9/public/poppy-lead-photo-img-8880-blpid1191458-dam-msg.jpg?h=c029297a&itok=LI3jMpke"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img :src="img2" class="d-block w-100" alt="..." />
             </div>
             <div class="carousel-item">
-              <img
-                src="https://www.exotic-seeds.store/5784-large_default/common-garden-poppy-seeds.jpg"
-                class="d-block w-100"
-                alt="..."
-              />
+              <img :src="img3" class="d-block w-100" alt="..." />
             </div>
           </div>
           <button
@@ -65,10 +57,10 @@
         </div>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-10 product-intro">
-        <h2>虞美人花</h2>
-        <p>產品類別：</p>
-        <p>包裝數量：3克(約3000顆)</p>
-        <p class="price">NT $ 20</p>
+        <h2>{{ title }}</h2>
+        <p>產品類別：{{ category }}</p>
+        <p>包裝數量：{{ seedAmount }}</p>
+        <p class="price">NT $ {{ price }}</p>
         <hr />
         <ol>
           <li>全館單筆購物滿 NT $ 599 免運費。</li>
@@ -143,12 +135,7 @@
             aria-labelledby="about-plant-tab"
           >
             <p class="plant-detail">
-              虞美人是一年生草本植物，別名舞草、賽牡丹、麗春花...等。 株高 40-80
-              公分，花徑
-              6-8公分不等；花色有白、紅、紫、粉等；花瓣有單瓣、複瓣兩種，單瓣花之花瓣有四片；花單朵，頂生，花冠盃狀。
-              建議於秋季夜溫降低後再播種。種子發芽溫度約在 18-22℃，發芽天數 10
-              天，高冷地約 8-9 月播；平地約 10-1 月播種，翌年 3-5
-              月開花。種子為好光性，日照、排水要良好，不宜覆土或薄覆土即可。因其植株不適合移植，建議直播在花盆、花槽、花圃為佳。
+              {{ feature }}
             </p>
           </div>
           <div
@@ -160,14 +147,14 @@
             <div class="intro-content">
               <span class="">播種期</span>
               <img src="../assets/icons/sprout.png" alt="" class="icons" />
-              <p>9－10月</p>
+              <p>{{ seedingTime }}</p>
             </div>
 
             <hr />
             <div class="intro-content">
               <span>開花期</span>
               <img src="../assets/icons/flower.png" alt="" class="icons" />
-              <p class="intro-content">4－6月</p>
+              <p class="intro-content">{{ bhSeason }}</p>
             </div>
 
             <hr />
@@ -178,14 +165,14 @@
                 alt=""
                 class="icons"
               />
-              <p class="intro-content">15－20℃</p>
+              <p class="intro-content">{{ temperature }}</p>
             </div>
 
             <hr />
             <div class="intro-content">
               <span>發芽天數</span>
               <img src="../assets/icons/calendar.png" alt="" class="icons" />
-              <p class="intro-content">14－16日</p>
+              <p class="intro-content">{{ day }}</p>
             </div>
           </div>
         </div>
@@ -199,7 +186,46 @@ export default {
   data() {
     return {
       quantity: 1,
+
+      //商品資訊
+      products: [],
+      id: [],
+      title: [],
+      category: [],
+      price: [],
+      seedAmount: [],
+      feature: [],
+      seedingTime: [],
+      bhSeason: [],
+      temperature: [],
+      day: [],
+      img1: [],
+      img2: [],
+      img3: [],
     };
+  },
+  mounted() {
+    // let vm = this;
+    const productInfo = JSON.parse(localStorage.getItem("products"));
+    // console.log(productInfo);
+    productInfo.forEach((product) => {
+      if (product.id == this.$route.params.productId) {
+        this.id = product.id;
+        console.log(this.id);
+        this.title = product.title;
+        this.category = product.category;
+        this.price = product.price;
+        this.seedAmount = product.seedAmount;
+        this.feature = product.feature;
+        this.seedingTime = product.seedingTime;
+        this.bhSeason = product.bhSeason;
+        this.temperature = product.temperature;
+        this.day = product.day;
+        this.img1 = product.img1;
+        this.img2 = product.img2;
+        this.img3 = product.img3;
+      }
+    });
   },
 };
 </script>
