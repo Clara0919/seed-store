@@ -78,7 +78,7 @@
           <div class="quantity input-group">
             <button class="btn btn-default" @click="decrement()">-</button>
 
-            <input class="number" type="number" min="0.00" :value="quantity" />
+            <input class="number" type="number" min="1.00" :value="quantity" />
 
             <button class="btn btn-default" @click="increment()">+</button>
           </div>
@@ -202,7 +202,50 @@ export default {
       img1: [],
       img2: [],
       img3: [],
+      cart: [],
     };
+  },
+
+  methods: {
+    //增減商品數量
+    increment() {
+      this.quantity++;
+    },
+    decrement() {
+      if (this.quantity === 1) {
+        return this.quantity;
+      } else {
+        return this.quantity--;
+      }
+    },
+    addCart(id, quantity) {
+      // console.log(this.cart);
+      let flag = false;
+      //先看購物車裡面有沒有同一件商品，有的話加上新數量
+      this.cart = this.cart.map((item) => {
+        if (item.id == id) {
+          item.quantity = item.quantity + quantity;
+          flag = true;
+        }
+        return item;
+      });
+      //購物車中沒有這項商品的話，加入這件商品的資訊
+      if (!flag) {
+        this.cart.push({
+          id,
+          quantity,
+          title: this.title,
+          price: this.price,
+          category: this.category,
+          img1: this.img1,
+        });
+      }
+      //console.log(this.cart);{id: 23, quantity: 3, title: '萵苣', price: 80, category: '蔬菜', …}
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+      alert("已加入購物車");
+    },
+
+    //加入購物車
   },
   mounted() {
     // let vm = this;
@@ -211,7 +254,6 @@ export default {
     productInfo.forEach((product) => {
       if (product.id == this.$route.params.productId) {
         this.id = product.id;
-        console.log(this.id);
         this.title = product.title;
         this.category = product.category;
         this.price = product.price;

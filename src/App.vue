@@ -56,9 +56,8 @@ export default {
   mounted() {
     this.axios.get("/getInfo").then((res) => {
       console.log(res);
-      this.name = res.data.user;
+      this.name = res.data.userName;
       this.loginStatus = res.data.isLogin;
-      // console.log(this.name);
     });
   },
 };
