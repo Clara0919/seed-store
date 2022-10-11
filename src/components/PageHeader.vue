@@ -70,7 +70,9 @@
         </div>
         <!-- 購物車 -->
         <span class="navbar-text">
-          <i class="fa-solid fa-cart-shopping"></i>
+          <router-link to="/shopCart"
+            ><i class="fa-solid fa-cart-shopping"></i
+          ></router-link>
         </span>
 
         <!--登入情況下 username｜登出 -->

@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
       <div class="col-11">
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -13,31 +13,112 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="cartItem in cart" :key="cartItem.id">
               <td class="img-box">
-                <img
-                  src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1100&q=60"
-                  alt=""
-                />
+                <img :src="cartItem.img1" alt="" />
               </td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
-              <td>@mdo</td>
+              <td>{{ cartItem.title }}</td>
+              <td>NT ${{ cartItem.price }}</td>
+              <td>
+                <div class="quantity input-group">
+                  <button
+                    class="btn btn-default"
+                    @click="decrement(cartItem.id)"
+                  >
+                    -
+                  </button>
+
+                  <input
+                    class="number"
+                    type="number"
+                    min="1.00"
+                    :value="cartItem.quantity"
+                  />
+
+                  <button
+                    class="btn btn-default"
+                    @click="increment(cartItem.id)"
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+              <td>NT ${{ cartItem.price * cartItem.quantity }}</td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3"></td>
+              <td colspan="1" class="total">總金額：</td>
+              <td colspan="1" class="total">NT ${{ amount }}</td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      cart: [],
+      quantity: 1,
+      totalPrice: [],
+    };
+  },
+  computed: {
+    amount() {
+      let money = 0;
+      this.cart.forEach((x) => {
+        money += x.price * x.quantity;
+      });
+      console.log(money);
+      return money;
+    },
+  },
+
+  methods: {
+    increment(id) {
+      // let flag = false;
+      this.cart = this.cart.map((item) => {
+        if (item.id == id) {
+          item.quantity++;
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+
+    decrement(id) {
+      this.cart = this.cart.map((item) => {
+        if (item.id == id && item.quantity > 1) {
+          item.quantity--;
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+    },
+  },
+
+  mounted() {
+    this.cart = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(this.cart);
+  },
+};
 </script>
 <style>
+/* * {
+  outline: 2px red solid;
+} */
+
 .table {
-  margin-top: 40px;
+  margin: 40px 0 30px 0;
   text-align: center;
+  vertical-align: middle;
+  table-layout: fixed;
+  word-break: break-all;
+  /* inline 元素才可用 */
 }
 
 .img-box {
@@ -49,5 +130,27 @@ export default {};
   height: 100%;
   object-fit: cover;
   position: center;
+  display: block;
+  margin: auto;
+}
+
+/* 數量加減 */
+.quantity {
+  padding-top: 30px;
+}
+.number {
+  text-align: center;
+  max-width: 100px;
+}
+
+.input-group {
+  padding: 10px 0;
+  justify-content: center;
+}
+
+.total {
+  /* text-align: end; */
+  font-size: 18px;
+  padding: 20px 0 !important;
 }
 </style>
