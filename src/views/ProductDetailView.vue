@@ -219,6 +219,10 @@ export default {
       }
     },
     addCart(id, quantity) {
+    
+      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
+        console.log(response);
+      });
       // console.log(this.cart);
       let flag = false;
       //先看購物車裡面有沒有同一件商品，有的話加上新數量
@@ -241,6 +245,7 @@ export default {
         });
       }
       localStorage.setItem("cart", JSON.stringify(this.cart));
+
       alert("已加入購物車");
       //console.log(this.cart);{id: 23, quantity: 3, title: '萵苣', price: 80, category: '蔬菜', …}
     },

@@ -1,7 +1,13 @@
 <template>
   <div class="container-fluid">
     <div class="row d-flex justify-content-center">
-      <div class="col-11">
+      <div class="col-10 d-flex justify-content-center">
+        <h2 class="title">購物車</h2>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+      <div class="col-10">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -54,6 +60,9 @@
             </tr>
           </tfoot>
         </table>
+        <form action="" class="d-flex justify-content-center">
+          <button class="sendOrder">送出訂單</button>
+        </form>
       </div>
     </div>
   </div>
@@ -112,6 +121,10 @@ export default {
   outline: 2px red solid;
 } */
 
+.title {
+  margin-top: 40px;
+}
+
 .table {
   margin: 40px 0 30px 0;
   text-align: center;
@@ -152,5 +165,19 @@ export default {
   /* text-align: end; */
   font-size: 18px;
   padding: 20px 0 !important;
+}
+
+.sendOrder {
+  background-color: var(--main-color1);
+  border-radius: 10px;
+  padding: 12px 25px;
+  border: 1.5px solid var(--main-color3);
+  color: var(--main-color3);
+  margin: 30px 0;
+}
+
+.sendOrder:hover {
+  background-color: var(--main-color4);
+  color: white;
 }
 </style>

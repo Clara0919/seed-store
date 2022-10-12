@@ -17,7 +17,7 @@
 :root {
   --main-color1: #fdfcf9;
   --main-color2: #ffeea9;
-  --main-color3: #32413a;
+  --main-color3: #485d53;
   --main-color4: #f5cf38;
   --main-color5: #5d8974;
 }
