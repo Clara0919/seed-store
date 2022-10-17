@@ -1,15 +1,12 @@
 <template>
   <div class="wholePage">
     <div class="PageHeader">
-      <PageHeader
-        @alreadyLogin="forceRerender"
-        :key="componentKey"
-      ></PageHeader>
+      <pageheader :key="componentKey"></pageheader>
       <!-- :user="name" :loginStatus="loginStatus" -->
       <!--  -->
     </div>
 
-    <div class="container-bg"><router-view /></div>
+    <div class="container-bg"><router-view @alreadylogin="rerender" /></div>
 
     <div class="PageFooter">
       <pagefooter></pagefooter>
@@ -44,18 +41,21 @@
 </style>
 
 <script>
-import PageHeader from "./components/PageHeader.vue";
-import Pagefooter from "./components/Pagefooter.vue";
+import pageheader from "./components/PageHeader.vue";
+import pagefooter from "./components/Pagefooter.vue";
 export default {
+  inheritAttrs: false,
   name: "App",
   components: {
-    PageHeader,
-    Pagefooter,
+    pageheader,
+    pagefooter,
   },
   data() {
     return {
       name: "",
       loginStatus: "",
+      // renderComponent: true,
+      componentKey: 0,
     };
   },
   // watch: {
@@ -63,9 +63,21 @@ export default {
   // },
 
   methods: {
-    forceRerender() {
-      this.componentKey += 1;
+    rerender() {
+      // console.log("hello");
+      this.componentKey++;
+      console.log(this.componentKey);
     },
+    // forceRerender() {
+    //   // Remove my-component from the DOM
+    //   this.renderComponent = false;
+
+    //   this.$nextTick(() => {
+    //     // Add the component back in
+    //     this.renderComponent = true;
+    //   });
+    // },
+    //接收 nav 傳來已登入的訊息後，觸發這個function
   },
   mounted() {},
 };

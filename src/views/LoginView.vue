@@ -53,7 +53,7 @@ export default {
       password: "",
     };
   },
-  emits: ["alreadyLogin"],
+  emits: ["alreadylogin"],
   methods: {
     postLogin() {
       this.axios
@@ -65,7 +65,7 @@ export default {
           //console.log(response.data.loginSuccess); 0
           if (response.data.loginSuccess === 0) {
             alert("登入成功");
-            this.$emit("alreadyLogin");
+            this.$emit("alreadylogin");
             return this.$router.push("/");
           } else if (response.data.loginSuccess === 1) {
             alert("此帳號未註冊");
