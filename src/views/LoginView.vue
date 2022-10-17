@@ -65,8 +65,8 @@ export default {
           //console.log(response.data.loginSuccess); 0
           if (response.data.loginSuccess === 0) {
             alert("登入成功");
-            this.$emit("alreadylogin");
-            return this.$router.push("/");
+            this.$router.push("/");
+            return this.$emit("alreadylogin");
           } else if (response.data.loginSuccess === 1) {
             alert("此帳號未註冊");
             return this.$router.push("/login");
