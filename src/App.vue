@@ -1,7 +1,12 @@
 <template>
   <div class="wholePage">
     <div class="PageHeader">
-      <PageHeader :user="name" :loginStatus="loginStatus"></PageHeader>
+      <PageHeader
+        @alreadyLogin="forceRerender"
+        :key="componentKey"
+      ></PageHeader>
+      <!-- :user="name" :loginStatus="loginStatus" -->
+      <!--  -->
     </div>
 
     <div class="container-bg"><router-view /></div>
@@ -53,12 +58,15 @@ export default {
       loginStatus: "",
     };
   },
-  mounted() {
-    this.axios.get("/getInfo").then((res) => {
-      console.log(res);
-      this.name = res.data.userName;
-      this.loginStatus = res.data.isLogin;
-    });
+  // watch: {
+  //   name(val, oldVal) {},
+  // },
+
+  methods: {
+    forceRerender() {
+      this.componentKey += 1;
+    },
   },
+  mounted() {},
 };
 </script>

@@ -78,7 +78,7 @@
         <!--登入情況下 username｜登出 -->
         <span class="navbar-text" v-if="loginStatus === true">
           <!--  -->
-          <router-link to="/login"> {{ user }} </router-link>
+          <router-link to="/login"> {{ name }} </router-link>
           <span class="line">|</span>
           <a href="" @click="logout">登出</a>
         </span>
@@ -95,9 +95,12 @@
 </template>
 <script>
 export default {
-  props: ["user", "loginStatus"],
+  // props: ["user", "loginStatus"],
   data() {
-    return {};
+    return {
+      name: "",
+      loginStatus: "",
+    };
   },
   methods: {
     logout() {
@@ -108,7 +111,13 @@ export default {
       });
     },
   },
-  mounted() {},
+  mounted() {
+    this.axios.get("/getInfo").then((res) => {
+      console.log(res);
+      this.name = res.data.userName;
+      this.loginStatus = res.data.isLogin;
+    });
+  },
 };
 </script>
 <style scoped>
