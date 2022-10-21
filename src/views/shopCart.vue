@@ -16,6 +16,7 @@
               <th scope="col">單價</th>
               <th scope="col">數量</th>
               <th scope="col">小計</th>
+              <th scope="col">修改</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +27,7 @@
               <td>{{ cartItem.title }}</td>
               <td>NT ${{ cartItem.price }}</td>
               <td>
-                <div class="quantity input-group">
+                <!-- <div class="quantity input-group">
                   <button
                     class="btn btn-default"
                     @click="decrement(cartItem.id)"
@@ -38,7 +39,7 @@
                     class="number"
                     type="number"
                     min="1.00"
-                    :value="cartItem.quantity"
+                    :value="cartItem.cartItem.quantity"
                   />
 
                   <button
@@ -47,14 +48,16 @@
                   >
                     +
                   </button>
-                </div>
+                </div> -->
+                {{ cartItem.cartItem.quantity }}
               </td>
-              <td>NT ${{ cartItem.price * cartItem.quantity }}</td>
+              <td>NT ${{ cartItem.price * cartItem.cartItem.quantity }}</td>
+              <td><button @click="deleteItem(cartItem.id)">刪除</button></td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="3"></td>
+              <td colspan="4"></td>
               <td colspan="1" class="total">總金額：</td>
               <td colspan="1" class="total">NT ${{ amount }}</td>
             </tr>
@@ -69,18 +72,20 @@
 </template>
 <script>
 export default {
+  // emits: ["alreadydelete"],
   data() {
     return {
       cart: [],
       quantity: 1,
       totalPrice: [],
+      userId: "",
     };
   },
   computed: {
     amount() {
       let money = 0;
       this.cart.forEach((x) => {
-        money += x.price * x.quantity;
+        money += x.price * x.cartItem.quantity;
       });
       console.log(money);
       return money;
@@ -88,31 +93,52 @@ export default {
   },
 
   methods: {
-    increment(id) {
-      // let flag = false;
-      this.cart = this.cart.map((item) => {
-        if (item.id == id) {
-          item.quantity++;
-        }
-        return item;
+    deleteItem(id) {
+      this.axios.post("/cart-delete-item", { productId: id }).then((res) => {
+        console.log("刪除的品項", res);
+        // this.axios.get("cart").then((getRes) => {
+        //   console.log("getRes", getRes);
+        window.location.reload(); //這個會重整畫面，導致後面的語法不會被執行
+        //this.$router.go(0); 這個應該就留在原地沒動作
+        // });
       });
-      localStorage.setItem("cart", JSON.stringify(this.cart));
     },
-
-    decrement(id) {
-      this.cart = this.cart.map((item) => {
-        if (item.id == id && item.quantity > 1) {
-          item.quantity--;
-        }
-        return item;
-      });
-      localStorage.setItem("cart", JSON.stringify(this.cart));
-    },
+    // increment(id) {
+    //   this.axios
+    //     .post("/cart-add-item", { productId: id })
+    //     .then(() => {
+    //       console.log("imclata");
+    // this.cart = this.cart.map((item) => {
+    //   console.log(item);
+    //   if (item.data.id == id) {
+    //     item.data.cartItem.quantity++;
+    //   }
+    //   return item;
+    // });
+    // })
+    // .catch((err) => {
+    //   console.log("err" + err.message);
+    // });
+    // },
+    //   decrement(id) {
+    //     this.cart = this.cart.map((item) => {
+    //       if (item.id == id && item.quantity > 1) {
+    //         item.quantity--;
+    //       }
+    //       return item;
+    //     });
+    //     localStorage.setItem("cart", JSON.stringify(this.cart));
+    //   },
   },
 
   mounted() {
-    this.cart = JSON.parse(localStorage.getItem("cart")) || [];
-    console.log(this.cart);
+    this.axios.get("/cart").then((res) => {
+      console.log(res);
+      this.cart = res.data;
+    });
+
+    // this.cart = JSON.parse(localStorage.getItem("cart")) || [];
+    // console.log(this.cart);
   },
 };
 </script>

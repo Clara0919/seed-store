@@ -12,6 +12,9 @@ export default {};
   background-color: var(--main-color2);
   height: 70px;
   padding: 15px 0;
+  bottom: 0;
+  position: sticky;
+  height: auto;
 }
 .footer p {
   text-align: center;

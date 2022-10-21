@@ -9,6 +9,7 @@ import Flower from '../views/Flower.vue'
 import Login from '../views/LoginView.vue'
 import SignUp from '../views/SignUpView.vue'
 import shopCart from '../views/shopCart.vue'
+import order from '../views/orderView.vue'
 
 const routes = [
   {
@@ -61,6 +62,10 @@ const routes = [
     name: 'shopCart',
     component: shopCart
 
+  },{
+    path:'/order',
+    name:'orderView',
+    component:order
   }
 ]
 
