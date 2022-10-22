@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row order">
-      <div class="col-lg-9 col-sm-11">
-        <h3>{{ name }} 你好！你的訂單已成功送出</h3>
+      <div class="col-lg-5 col-sm-8">
+        <h3 class="message">{{ name }} 你好！你的訂單已成功送出</h3>
       </div>
       <div class="col-lg-8 col-sm-10 receipt">
         <h3>訂單明細</h3>
@@ -65,17 +65,18 @@ export default {
 };
 </script>
 <style scoped>
+* {
+  text-decoration: none;
+}
 .order {
   display: flex;
   justify-content: center;
 }
-h3:first-child {
+.message {
   text-align: center;
-  margin-top: 60px;
-}
-
-.receipt {
-  background: white;
+  margin: 60px 0;
+  background-color: rgba(252, 227, 30, 0.3);
+  line-height: 50px;
 }
 
 .receipt h3,
@@ -84,11 +85,28 @@ th {
 }
 
 .receipt h3 {
-  margin: 70px 0 10px 0;
+  text-align: center;
+  margin: 30px 0 10px 0;
+}
+
+.table {
+  margin-bottom: 60px;
+  text-align: center;
 }
 
 button {
   display: block;
-  margin: auto;
+  margin: 30px auto;
+  background-color: var(--main-color1);
+  border-radius: 10px;
+  padding: 12px 25px;
+  border: 1.5px solid var(--main-color3);
+  color: var(--main-color3);
+}
+
+button:hover {
+  background-color: var(--main-color4);
+  color: white;
+  border: 1.5px solid var(--main-color4);
 }
 </style>

@@ -218,11 +218,13 @@ export default {
         return this.quantity--;
       }
     },
+
     addCart(id, quantity) {
-    
-      this.axios.post("/cart-add-item", { productId: id }).then((response) => {
-        console.log(response);
-      });
+      this.axios
+        .post("/cart-add-item", { productId: id, quantity: quantity })
+        .then((response) => {
+          console.log(response);
+        });
       // console.log(this.cart);
       let flag = false;
       //先看購物車裡面有沒有同一件商品，有的話加上新數量

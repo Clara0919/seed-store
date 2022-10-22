@@ -52,7 +52,11 @@
                 {{ cartItem.cartItem.quantity }}
               </td>
               <td>NT ${{ cartItem.price * cartItem.cartItem.quantity }}</td>
-              <td><button @click="deleteItem(cartItem.id)">刪除</button></td>
+              <td>
+                <button class="deleteBtn" @click="deleteItem(cartItem.id)">
+                  刪除
+                </button>
+              </td>
             </tr>
           </tbody>
           <tfoot>
@@ -64,7 +68,9 @@
           </tfoot>
         </table>
         <form action="" class="d-flex justify-content-center">
-          <button class="sendOrder">送出訂單</button>
+          <router-link to="/order"
+            ><button class="sendOrder">送出訂單</button></router-link
+          >
         </form>
       </div>
     </div>
@@ -142,7 +148,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 /* * {
   outline: 2px red solid;
 } */
@@ -205,5 +211,16 @@ export default {
 .sendOrder:hover {
   background-color: var(--main-color4);
   color: white;
+  border: none;
+}
+
+.deleteBtn {
+  border: 2px solid var(--main-color4);
+  background: none;
+  border-radius: 5px;
+  font-size: 15px;
+  color: var(--main-color4);
+  max-width: 100%;
+  padding: 5px 8px;
 }
 </style>

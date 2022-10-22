@@ -110,6 +110,7 @@ export default {
         .then((res) => {
           if (res.data.signUpSuccess === 0) {
             alert("註冊成功");
+            this.$router.push("/login");
           } else if (res.data.signUpSuccess === 1) {
             alert("該信箱已註冊");
             this.$router.push("/login");

@@ -37,7 +37,7 @@
                   v-bind:style="{ backgroundImage: `url(${product.img1})` }"
                 ></div>
                 <div class="card-info">
-                  <router-link :to="`/product/${product.id}`">
+                  <router-link class="link" :to="`/product/${product.id}`">
                     <p class="tag"># {{ product.category }}</p>
                     <h3>{{ product.title }}</h3>
                     <p class="price">
@@ -80,6 +80,10 @@ export default {
 };
 </script>
   <style scoped>
+.link {
+  text-decoration: none;
+  color: black;
+}
 .banner {
   background-image: url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
   width: 100%;
