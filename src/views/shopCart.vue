@@ -7,7 +7,7 @@
     </div>
 
     <div class="row d-flex justify-content-center">
-      <div class="col-10">
+      <div class="col-10" v-if="show">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -69,9 +69,14 @@
         </table>
         <form action="" class="d-flex justify-content-center">
           <router-link to="/order"
-            ><button class="sendOrder">送出訂單</button></router-link
+            ><button class="sendOrder" @click="createOrder">
+              送出訂單
+            </button></router-link
           >
         </form>
+      </div>
+      <div class="empty col-10" v-else>
+        <p>購物車尚無商品</p>
       </div>
     </div>
   </div>
@@ -84,7 +89,8 @@ export default {
       cart: [],
       quantity: 1,
       totalPrice: [],
-      userId: "",
+      id: "",
+      show: false,
     };
   },
   computed: {
@@ -99,6 +105,7 @@ export default {
   },
 
   methods: {
+    ////刪除商品
     deleteItem(id) {
       this.axios.post("/cart-delete-item", { productId: id }).then((res) => {
         console.log("刪除的品項", res);
@@ -107,6 +114,14 @@ export default {
         window.location.reload(); //這個會重整畫面，導致後面的語法不會被執行
         //this.$router.go(0); 這個應該就留在原地沒動作
         // });
+      });
+    },
+
+    ////送出訂單
+    createOrder() {
+      this.axios.post("/create-order", { id: this.id }).then((res) => {
+        console.log(res);
+        alert("已送出訂單");
       });
     },
     // increment(id) {
@@ -141,6 +156,11 @@ export default {
     this.axios.get("/cart").then((res) => {
       console.log(res);
       this.cart = res.data;
+      if (this.cart.length <= 0) {
+        this.show = false;
+      } else {
+        this.show = true;
+      }
     });
 
     // this.cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -222,5 +242,10 @@ export default {
   color: var(--main-color4);
   max-width: 100%;
   padding: 5px 8px;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 100px;
 }
 </style>

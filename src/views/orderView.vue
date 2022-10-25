@@ -5,28 +5,29 @@
         <h3 class="message">{{ name }} 你好！你的訂單已成功送出</h3>
       </div>
       <div class="col-lg-8 col-sm-10 receipt">
-        <h3>訂單明細</h3>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">商品</th>
-              <th scope="col">數量</th>
-              <th scope="col">小計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in order" :key="item.id">
-              <th scope="row">{{ index + 1 }}</th>
-              <td>{{ item.title }}</td>
-              <td>{{ item.cartItem.quantity }}</td>
-              <td>{{ item.cartItem.quantity * item.price }}</td>
-            </tr>
-            <tr>
-              <td colspan="4">總金額：{{ amount }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <h3>所有訂單明細</h3>
+        <template v-for="order in orders" :key="order.id">
+          <table class="table col-lg-8 col-md-9 col-sm-10">
+            <thead>
+              <tr>
+                <th scope="col" colspan="1">商品</th>
+                <th scope="col" colspan="1">數量</th>
+                <th scope="col" colspan="1">小計</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="product in order.products" :key="product.id">
+                <td>{{ product.title }}</td>
+                <td>{{ product.orderItem.quantity }}</td>
+                <td>{{ product.orderItem.quantity * product.price }}</td>
+              </tr>
+
+              <tr>
+                <td colspan="3">總金額：{{ order.amount }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </template>
       </div>
       <div class="col-lg-5 col-sm-10">
         <router-link to="/"><button>返回首頁</button></router-link>
@@ -39,33 +40,40 @@ export default {
   data() {
     return {
       name: "",
-      order: [],
+      orders: [],
     };
   },
   computed: {
-    amount() {
-      let total = 0;
-      this.order.forEach((x) => {
-        total += x.price * x.cartItem.quantity;
-      });
-      console.log(total);
-      return total;
-    },
+    // amount() {
+    //   let total = 0;
+    //   this.order.forEach((x) => {
+    //     total = x.amount;
+    //   });
+    //   console.log(total);
+    //   return total;
+    // },
   },
   mounted() {
     this.axios.get("/getInfo").then((res) => {
       console.log(res);
       this.name = res.data.userName;
     });
-    this.axios.get("/cart").then((res) => {
+    // this.axios.get("/cart").then((res) => {
+    //   console.log(res);
+    //   this.order = res.data;
+    // });
+
+    this.axios.get("/order").then((res) => {
       console.log(res);
-      this.order = res.data;
+      this.orders = res.data;
+      console.log("所有訂單", this.orders);
     });
   },
 };
 </script>
 <style scoped>
 * {
+  /* outline: 1px solid red; */
   text-decoration: none;
 }
 .order {
@@ -86,12 +94,13 @@ th {
 
 .receipt h3 {
   text-align: center;
-  margin: 30px 0 10px 0;
+  margin: 30px 0 40px 0;
 }
 
 .table {
   margin-bottom: 60px;
   text-align: center;
+  table-layout: fixed;
 }
 
 button {

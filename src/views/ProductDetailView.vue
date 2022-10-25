@@ -253,6 +253,7 @@ export default {
       alert("已加入購物車");
       //console.log(this.cart);{id: 23, quantity: 3, title: '萵苣', price: 80, category: '蔬菜', …}
     },
+
   },
   mounted() {
     // let vm = this;
