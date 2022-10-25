@@ -157,6 +157,7 @@ export default {
       console.log(res);
       this.cart = res.data;
       if (this.cart.length <= 0) {
+        //如果購物車無東西 顯示購物車目前無商品
         this.show = false;
       } else {
         this.show = true;

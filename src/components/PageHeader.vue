@@ -68,7 +68,7 @@
           <!-- {{ $route.fullPath }} -->
           <ul class="result" :class="show ? '' : 'd-none'">
             <!-- @click="clickEvent -->
-            <li v-for="item in filterWord" :key="item.id" @click="check">
+            <li v-for="item in filterWord" :key="item.id" @click="choose">
               <!--  :class="selectedIndex == i ? 'bg-light' : ''" -->
               <router-link
                 class="link"
@@ -76,12 +76,10 @@
                 :key="$route.fullPath"
                 >{{ item.title }}
               </router-link>
-              <!--  -->
             </li>
           </ul>
-          <!-- </ul> -->
 
-          <button type="button" @click="searchProducts">
+          <button type="button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
@@ -151,12 +149,11 @@ export default {
       });
     },
 
-    check() {
-      this.show = false;
-      // this.keyword = item.title;
+    choose() {
+      return (this.show = false);
     },
     searchAgain() {
-      this.show = true;
+      return (this.show = true);
     },
     changePage() {
       // window.location.reload;
@@ -174,33 +171,33 @@ export default {
   //     return this.$route.fullPath;
   //   },
   // },
-  watch: {
-    "$route.fullPath"() {
-      this.init();
-    },
-  },
-  methods: {
-    init() {
-      const productInfo = JSON.parse(localStorage.getItem("products"));
-      productInfo.forEach((product) => {
-        if (product.id == this.$route.params.productId) {
-          this.id = product.id;
-          this.title = product.title;
-          this.category = product.category;
-          this.price = product.price;
-          this.seedAmount = product.seedAmount;
-          this.feature = product.feature;
-          this.seedingTime = product.seedingTime;
-          this.bhSeason = product.bhSeason;
-          this.temperature = product.temperature;
-          this.day = product.day;
-          this.img1 = product.img1;
-          this.img2 = product.img2;
-          this.img3 = product.img3;
-        }
-      });
-    },
-  },
+  // watch: {
+  //   "$route.fullPath"() {
+  //     this.init();
+  //   },
+  // },
+  // methods: {
+  // init() {
+  //   const productInfo = JSON.parse(localStorage.getItem("products"));
+  //   productInfo.forEach((product) => {
+  //     if (product.id == this.$route.params.productId) {
+  //       this.id = product.id;
+  //       this.title = product.title;
+  //       this.category = product.category;
+  //       this.price = product.price;
+  //       this.seedAmount = product.seedAmount;
+  //       this.feature = product.feature;
+  //       this.seedingTime = product.seedingTime;
+  //       this.bhSeason = product.bhSeason;
+  //       this.temperature = product.temperature;
+  //       this.day = product.day;
+  //       this.img1 = product.img1;
+  //       this.img2 = product.img2;
+  //       this.img3 = product.img3;
+  //     }
+  //   });
+  // },
+  // },
   mounted() {
     this.axios.get("/getInfo").then((res) => {
       console.log(res);
@@ -213,7 +210,7 @@ export default {
       // this.title = res.data.data.map((item) => item.title);
       // console.log(this.title);
     });
-    this.init();
+    // this.init();
   },
 
   computed: {
