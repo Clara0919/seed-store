@@ -101,13 +101,11 @@
   </div>
 </template>
 <script>
-export default {
-  
-};
+export default {};
 </script>
 <style scoped>
 .banner {
-  background-image: url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
+  background-image: url("https://images.unsplash.com/photo-1519897831810-a9a01aceccd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1931&q=80");
   width: 100%;
   height: 350px;
   background-position: center center;

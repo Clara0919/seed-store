@@ -226,7 +226,11 @@
 .sub-title {
   font-size: 30px;
   color: var(--main-color3);
-  margin: 100px 0 0 0;
+  margin: 100px 0 10px 0;
+  /* background-color: rgba(245, 207, 56, 0.3);
+  width: fit-content;
+  padding: 10px 15px;
+  border-radius: 6px; */
 }
 
 /* slick  */

@@ -219,6 +219,8 @@ export default {
       }
     },
 
+    //加入購物車
+
     addCart(id, quantity) {
       this.axios
         .post("/cart-add-item", { productId: id, quantity: quantity })
@@ -226,33 +228,31 @@ export default {
           console.log(response);
         });
       // console.log(this.cart);
-      let flag = false;
+      // let flag = false;
       //先看購物車裡面有沒有同一件商品，有的話加上新數量
-      this.cart = this.cart.map((item) => {
-        if (item.id == id) {
-          item.quantity = item.quantity + quantity;
-          flag = true;
-        }
-        return item;
-      });
+      // this.cart = this.cart.map((item) => {
+      //   if (item.id == id) {
+      //     item.quantity = item.quantity + quantity;
+      //     flag = true;
+      //   }
+      //   return item;
+      // });
       //購物車中沒有這項商品的話，加入這件商品的資訊
-      if (!flag) {
-        this.cart.push({
-          id,
-          quantity,
-          title: this.title,
-          price: this.price,
-          category: this.category,
-          img1: this.img1,
-        });
-      }
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+      // if (!flag) {
+      //   this.cart.push({
+      //     id,
+      //     quantity,
+      //     title: this.title,
+      //     price: this.price,
+      //     category: this.category,
+      //     img1: this.img1,
+      //   });
+      // }
+      // localStorage.setItem("cart", JSON.stringify(this.cart));
 
       alert("已加入購物車");
       //console.log(this.cart);{id: 23, quantity: 3, title: '萵苣', price: 80, category: '蔬菜', …}
     },
-
-    //加入購物車
   },
   mounted() {
     // let vm = this;
@@ -275,11 +275,11 @@ export default {
         this.img3 = product.img3;
       }
     });
-    if (localStorage.getItem("cart")) {
-      this.cart = JSON.parse(localStorage.getItem("cart"));
-    } else {
-      this.cart = [];
-    }
+    // if (localStorage.getItem("cart")) {
+    //   this.cart = JSON.parse(localStorage.getItem("cart"));
+    // } else {
+    //   this.cart = [];
+    // }
   },
 };
 </script>

@@ -39,35 +39,53 @@
             >
           </li>
           <li class="nav-item">
-            <router-link to="/selected-category"
-              ><a class="nav-link">水果</a></router-link
-            >
+            <router-link to="/fruit"><a class="nav-link">水果</a></router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/selected-category">
+            <router-link to="/flower">
               <a class="nav-link">花卉</a></router-link
             >
           </li>
           <li class="nav-item">
-            <router-link to="/selected-category"
-              ><a class="nav-link">香草</a></router-link
-            >
+            <router-link to="/herb"><a class="nav-link">香草</a></router-link>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <router-link to="/selected-category">
               <a class="nav-link">園藝工具</a></router-link
             >
-          </li>
+          </li> -->
         </ul>
       </div>
       <!-- 搜尋欄 -->
       <div class="navbar-function">
         <div class="search">
-          <input type="search" placeholder="請輸入作物名稱" />
-          <button type="button">
+          <input
+            type="search"
+            placeholder="請輸入作物名稱"
+            v-model.trim="keyword"
+            @click="searchAgain"
+          />
+          <!-- {{ $route.fullPath }} -->
+          <ul class="result" :class="show ? '' : 'd-none'">
+            <!-- @click="clickEvent -->
+            <li v-for="item in filterWord" :key="item.id" @click="check">
+              <!--  :class="selectedIndex == i ? 'bg-light' : ''" -->
+              <router-link
+                class="link"
+                :to="`/product/${item.id}`"
+                :key="$route.fullPath"
+                >{{ item.title }}
+              </router-link>
+              <!--  -->
+            </li>
+          </ul>
+          <!-- </ul> -->
+
+          <button type="button" @click="searchProducts">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
+
         <!-- 購物車 -->
         <span class="navbar-text">
           <router-link to="/shopCart"
@@ -100,14 +118,86 @@ export default {
     return {
       name: "",
       loginStatus: "",
+      // title: [],
+      products: [],
+      matchProducts: [],
+      keyword: "",
+      // 用show 來控制是否顯示選單
+      show: true,
+      selectedIndex: 0,
     };
   },
+  // beforeRouteUpdate(to, from, next) {
+  //   console.log(to, from, next);
+  //   console.log("hello");
+  //   if (to.fullPath != from.fullPath) {
+  //     next();
+  //     console.log(to, from, next);
+  //     console.log("hello");
+  // this.getUrl()
+  //   }
+  // },
+  // watch
   methods: {
+    // searchProducts() {
+    //   this.products = this.filterWord;
+    //   this.autoComplete = false;
+    // },
     logout() {
       this.axios.get("/logout", (req, res) => {
         alert("登出成功");
         this.$router.push("/");
         // window.location.reload();
+      });
+    },
+
+    check() {
+      this.show = false;
+      // this.keyword = item.title;
+    },
+    searchAgain() {
+      this.show = true;
+    },
+    changePage() {
+      // window.location.reload;
+      console.log("hello");
+    },
+
+    clickEvent() {
+      //
+      //   }
+      // });
+    },
+  },
+  // computed: {
+  //   fullPath() {
+  //     return this.$route.fullPath;
+  //   },
+  // },
+  watch: {
+    "$route.fullPath"() {
+      this.init();
+    },
+  },
+  methods: {
+    init() {
+      const productInfo = JSON.parse(localStorage.getItem("products"));
+      productInfo.forEach((product) => {
+        if (product.id == this.$route.params.productId) {
+          this.id = product.id;
+          this.title = product.title;
+          this.category = product.category;
+          this.price = product.price;
+          this.seedAmount = product.seedAmount;
+          this.feature = product.feature;
+          this.seedingTime = product.seedingTime;
+          this.bhSeason = product.bhSeason;
+          this.temperature = product.temperature;
+          this.day = product.day;
+          this.img1 = product.img1;
+          this.img2 = product.img2;
+          this.img3 = product.img3;
+        }
       });
     },
   },
@@ -117,13 +207,31 @@ export default {
       this.name = res.data.userName;
       this.loginStatus = res.data.isLogin;
     });
+    this.axios.get("/products").then((res) => {
+      this.products = res.data.data;
+      // console.log(this.products);
+      // this.title = res.data.data.map((item) => item.title);
+      // console.log(this.title);
+    });
+    this.init();
+  },
+
+  computed: {
+    filterWord() {
+      if (this.keyword.length <= 0) {
+        return;
+      } else {
+        return this.products.filter((result) =>
+          result.title.match(this.keyword)
+        );
+      }
+    },
   },
 };
 </script>
 <style scoped>
 * {
   box-sizing: border-box;
-  /* outline: solid 1px red; */
 }
 
 .header-promotion {
@@ -191,5 +299,37 @@ nav {
 
 .line {
   margin: 0 10px;
+}
+
+.result {
+  margin-left: 30px;
+  width: 250px;
+  /* outline: red solid 1px; */
+  position: absolute;
+  background-color: white;
+  list-style-type: none;
+  box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 8px 8px 21px -11px rgba(0, 0, 0, 0.2);
+}
+
+.result li {
+  padding: 12px 5px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+input:focus {
+  outline: var(--main-color4) 2px solid;
+  -webkit-box-shadow: 0px 0px 9px 5px rgba(245, 207, 56, 0.3);
+  box-shadow: 0px 0px 4px 2px rgba(245, 207, 56, 0.3);
 }
 </style>

@@ -5,8 +5,10 @@
       <div class="col-11">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <router-link class="link" to="/">首頁</router-link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">香草</li>
           </ol>
         </nav>
       </div>
@@ -37,14 +39,14 @@
                   v-bind:style="{ backgroundImage: `url(${product.img1})` }"
                 ></div>
                 <div class="card-info">
-                  <router-link :to="`/product/${product.id}`">
+                  <router-link class="link" :to="`/product/${product.id}`">
                     <p class="tag"># {{ product.category }}</p>
                     <h3>{{ product.title }}</h3>
                     <p class="price">
                       <b>NT$ {{ product.price }}</b>
                     </p>
                   </router-link>
-                  <button>
+                  <button @click="addCart(product.id)">
                     <i class="fa-solid fa-cart-plus"></i> 加入購物車
                   </button>
                 </div>
@@ -63,6 +65,19 @@ export default {
       products: [],
     };
   },
+  methods: {
+    //加入購物車
+
+    addCart(id) {
+      this.axios
+        .post("/cart-add-item", { productId: id, quantity: 1 })
+        .then((response) => {
+          console.log(response);
+        });
+
+      alert("已加入購物車");
+    },
+  },
   mounted() {
     this.products = JSON.parse(localStorage.getItem("products")).filter(
       //JSON.parse 把 json 轉換為物件或值
@@ -75,21 +90,28 @@ export default {
 </script>
   <style scoped>
 .banner {
-  background-image: url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
+  background-image: url("../assets/banner/香草banner.jpg");
   width: 100%;
   height: 350px;
   background-position: center center;
   border-radius: 10px;
+  background-size: 100%;
+  background-repeat: none;
 }
 
-.banner-blur {
+/* .banner-blur {
   width: 100%;
   height: 350px;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
-}
+} */
 
 /* 商品卡片 */
+
+.link {
+  text-decoration: none;
+  color: black;
+}
 .product-card {
   padding: 0px;
   background-color: white;
@@ -108,7 +130,7 @@ export default {
   width: 100%;
   height: 200px;
   background-size: cover;
-  background-position: center center;
+  background-position: bottom 35%;
   border-radius: 10px 10px 0 0;
 }
 .card-info {

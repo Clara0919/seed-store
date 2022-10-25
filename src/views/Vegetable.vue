@@ -5,8 +5,10 @@
       <div class="col-11">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Library</li>
+            <li class="breadcrumb-item">
+              <router-link class="link" to="/">首頁</router-link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">蔬菜</li>
           </ol>
         </nav>
       </div>
@@ -44,7 +46,7 @@
                       <b>NT$ {{ product.price }}</b>
                     </p>
                   </router-link>
-                  <button>
+                  <button @click="addCart(product.id)">
                     <i class="fa-solid fa-cart-plus"></i> 加入購物車
                   </button>
                 </div>
@@ -62,6 +64,19 @@ export default {
     return {
       products: [],
     };
+  },
+  methods: {
+    //加入購物車
+
+    addCart(id) {
+      this.axios
+        .post("/cart-add-item", { productId: id, quantity: 1 })
+        .then((response) => {
+          console.log(response);
+        });
+
+      alert("已加入購物車");
+    },
   },
   mounted() {
     // this.axios.get("/products").then((response) => {
@@ -85,19 +100,21 @@ export default {
   color: black;
 }
 .banner {
-  background-image: url("https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
+  background-image: url("../assets/banner/蔬菜banner.jpg");
   width: 100%;
   height: 350px;
   background-position: center center;
+  background-size: 100%;
+  background-repeat: none;
   border-radius: 10px;
 }
 
-.banner-blur {
+/* .banner-blur {
   width: 100%;
   height: 350px;
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(1px);
-}
+} */
 
 /* 商品卡片 */
 .product-card {

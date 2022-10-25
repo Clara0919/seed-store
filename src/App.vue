@@ -7,7 +7,7 @@
     </div>
 
     <div class="container-bg">
-      <router-view @alreadylogin="rerender" class="main" />
+      <router-view @alreadylogin="rerender" />
       <!-- v-on="{ alreadylogin: rerender, alreadydelete: shopCartRender }"
         :key="shopCartKey" -->
     </div>
@@ -83,14 +83,10 @@ export default {
     return {
       name: "",
       loginStatus: "",
-      // renderComponent: true,
       componentKey: 0,
       shopCartKey: 0,
     };
   },
-  // watch: {
-  //   name(val, oldVal) {},
-  // },
 
   methods: {
     rerender() {
@@ -98,21 +94,6 @@ export default {
       this.componentKey++;
       console.log(this.componentKey);
     },
-    shopCartRender() {
-      console.log("hello");
-      this.shopCartKey++;
-      console.log(this.shopCartKey);
-    },
-    // forceRerender() {
-    //   // Remove my-component from the DOM
-    //   this.renderComponent = false;
-
-    //   this.$nextTick(() => {
-    //     // Add the component back in
-    //     this.renderComponent = true;
-    //   });
-    // },
-    //接收 nav 傳來已登入的訊息後，觸發這個function
   },
   mounted() {},
 };
