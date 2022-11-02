@@ -65,15 +65,11 @@
             v-model.trim="keyword"
             @click="searchAgain"
           />
-          <!-- {{ $route.fullPath }} -->
           <ul class="result" :class="show ? '' : 'd-none'">
             <!-- @click="clickEvent -->
             <li v-for="item in filterWord" :key="item.id" @click="choose">
               <!--  :class="selectedIndex == i ? 'bg-light' : ''" -->
-              <router-link
-                class="link"
-                :to="`/product/${item.id}`"
-                :key="$route.fullPath"
+              <router-link class="link" :to="`/product/${item.id}`"
                 >{{ item.title }}
               </router-link>
             </li>

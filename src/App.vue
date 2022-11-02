@@ -7,7 +7,7 @@
     </div>
 
     <div class="container-bg">
-      <router-view @alreadylogin="rerender" />
+      <router-view @alreadylogin="rerender" :key="$route.fullPath" />
       <!-- v-on="{ alreadylogin: rerender, alreadydelete: shopCartRender }"
         :key="shopCartKey" -->
     </div>

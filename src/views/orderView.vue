@@ -7,26 +7,28 @@
       <div class="col-lg-8 col-sm-10 receipt">
         <h3>所有訂單明細</h3>
         <template v-for="order in orders" :key="order.id">
-          <table class="table col-lg-8 col-md-9 col-sm-10">
-            <thead>
-              <tr>
-                <th scope="col" colspan="1">商品</th>
-                <th scope="col" colspan="1">數量</th>
-                <th scope="col" colspan="1">小計</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="product in order.products" :key="product.id">
-                <td>{{ product.title }}</td>
-                <td>{{ product.orderItem.quantity }}</td>
-                <td>{{ product.orderItem.quantity * product.price }}</td>
-              </tr>
+          <div class="order-box">
+            <table class="table col-lg-8 col-md-9 col-sm-10">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="1">商品</th>
+                  <th scope="col" colspan="1">數量</th>
+                  <th scope="col" colspan="1">小計</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="product in order.products" :key="product.id">
+                  <td>{{ product.title }}</td>
+                  <td>{{ product.orderItem.quantity }}</td>
+                  <td>{{ product.orderItem.quantity * product.price }}</td>
+                </tr>
 
-              <tr>
-                <td colspan="3">總金額：{{ order.amount }}</td>
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td colspan="3">總金額：{{ order.amount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </template>
       </div>
       <div class="col-lg-5 col-sm-10">
@@ -97,6 +99,13 @@ th {
   margin: 30px 0 40px 0;
 }
 
+.order-box {
+  padding: 30px 10px 10px 10px;
+  background-color: white;
+  -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.18);
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.18);
+  margin-bottom: 20px;
+}
 .table {
   margin-bottom: 60px;
   text-align: center;
