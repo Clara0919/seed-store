@@ -1,3 +1,4 @@
+Loginview
 <template>
   <div class="container-fluid login-page">
     <div class="row">
@@ -65,6 +66,7 @@ export default {
           //console.log(response.data.loginSuccess); 0
           if (response.data.loginSuccess === 0) {
             alert("登入成功");
+            sessionStorage.setItem("isLogin", true);
             this.$router.push("/");
             return this.$emit("alreadylogin");
           } else if (response.data.loginSuccess === 1) {
@@ -78,16 +80,6 @@ export default {
         .catch((err) => {
           console.log("err" + err.message);
         });
-    },
-    postLogout() {
-      this.axios.post("/logout", (req, res) => {
-        if (res.locals.isLogin === false) {
-          alert("登出成功");
-          this.$router.push("/");
-        } else {
-          console.log(err.message);
-        }
-      });
     },
   },
   mounted() {},

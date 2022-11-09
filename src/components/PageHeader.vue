@@ -1,3 +1,4 @@
+pageHeader.vue
 <template>
   <div class="header-promotion">
     <p>
@@ -121,27 +122,19 @@ export default {
       selectedIndex: 0,
     };
   },
-  // beforeRouteUpdate(to, from, next) {
-  //   console.log(to, from, next);
-  //   console.log("hello");
-  //   if (to.fullPath != from.fullPath) {
-  //     next();
-  //     console.log(to, from, next);
-  //     console.log("hello");
-  // this.getUrl()
-  //   }
-  // },
-  // watch
+
   methods: {
-    // searchProducts() {
-    //   this.products = this.filterWord;
-    //   this.autoComplete = false;
-    // },
     logout() {
-      this.axios.get("/logout", (req, res) => {
-        alert("登出成功");
-        this.$router.push("/");
-        // window.location.reload();
+      this.axios.get("/logout").then((res) => {
+        if (res.data.logoutSuccess === 0) {
+          console.log("res測試", res.data.logoutSuccess);
+          alert("登出成功");
+          sessionStorage.removeItem("isLogin");
+          this.$router.push("/"); //跳轉完會再次跳回原頁 不知道為何
+          return;
+        } else {
+          console.log(err.message);
+        }
       });
     },
 
@@ -150,16 +143,6 @@ export default {
     },
     searchAgain() {
       return (this.show = true);
-    },
-    changePage() {
-      // window.location.reload;
-      console.log("hello");
-    },
-
-    clickEvent() {
-      //
-      //   }
-      // });
     },
   },
   // computed: {

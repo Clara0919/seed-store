@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
 import ProductDetail from '../views/ProductDetailView.vue'
@@ -60,7 +61,20 @@ const routes = [
   , {
     path: '/shopCart',
     name: 'shopCart',
-    component: shopCart
+    component: shopCart,
+    beforeEnter: (to,from,next) => {
+    
+      if(!sessionStorage.getItem('isLogin')) {
+        console.log('測試isLogin',sessionStorage.getItem('isLogin'))
+        alert('請先登入')
+        router.push('/login')
+      } else {
+        next()
+      }
+    }
+ 
+ 
+
 
   },{
     path:'/order',
@@ -75,4 +89,7 @@ const router = createRouter({
   routes
 })
 
+
+
 export default router
+
