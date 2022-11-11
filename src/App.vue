@@ -7,9 +7,8 @@
     </div>
 
     <div class="container-bg">
-      <router-view @alreadylogin="rerender" />
-      <!-- v-on="{ alreadylogin: rerender, alreadydelete: shopCartRender }"
-        :key="shopCartKey" -->
+      <router-view @alreadylogin="rerender" :key="$route.fullPath" />
+      <!-- :key="$route.fullPath" 進入商品頁後，點擊其他搜尋結果換頁-->
     </div>
 
     <div class="PageFooter">
