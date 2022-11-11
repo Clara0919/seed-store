@@ -32,7 +32,7 @@
       <div class="col-11">
         <div class="row gy-4 gx-5">
           <template v-for="product in products" :key="product.id">
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 herb">
               <div class="product-card">
                 <div
                   class="card-img"
@@ -97,6 +97,15 @@ export default {
   border-radius: 10px;
   background-size: 100%;
   background-repeat: none;
+}
+
+@media (max-width: 580px) {
+  .banner {
+    display: none;
+  }
+  .herb {
+    padding: 0 5px;
+  }
 }
 
 /* .banner-blur {

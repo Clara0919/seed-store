@@ -6,10 +6,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <router-link to="/">首頁</router-link>
+              <router-link class="link" to="/">首頁</router-link>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
               {{ category }}
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{ title }}
             </li>
           </ol>
         </nav>
@@ -253,7 +256,6 @@ export default {
       alert("已加入購物車");
       //console.log(this.cart);{id: 23, quantity: 3, title: '萵苣', price: 80, category: '蔬菜', …}
     },
-
   },
   mounted() {
     // let vm = this;
@@ -289,7 +291,7 @@ export default {
   padding: 50px 20px;
 }
 .product-intro {
-  padding: 50px 30px;
+  padding: 40px 30px;
 }
 
 .product-intro ol {
@@ -410,5 +412,11 @@ hr {
   font-size: 18px;
   line-height: 40px;
   margin-top: 30px;
+}
+
+/* 麵包屑 */
+.link {
+  text-decoration: none;
+  color: black;
 }
 </style>

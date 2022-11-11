@@ -116,7 +116,7 @@
 /* 伸縮卡片 */
 .flex-card {
   display: flex;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 .panel1 {
   background-image: url(../assets/banner/首頁banner-5.jpg);
@@ -312,9 +312,12 @@
   scale: 1.05;
 }
 @media (max-width: 580px) {
+  .coupon-info {
+    padding: 80px 90px;
+  }
   .coupon h3 {
-    line-height: 40px;
-    font-size: 20px;
+    line-height: 30px;
+    font-size: 18px;
   }
 }
 </style>
