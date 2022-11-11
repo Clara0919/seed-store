@@ -102,6 +102,10 @@ export default {
   line-height: 15px;
   color: var(--main-color3);
 }
+
+a {
+  color: var(--main-color3);
+}
 .extraService input {
   margin-right: 10px;
 }

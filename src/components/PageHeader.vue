@@ -91,9 +91,9 @@ pageHeader.vue
         <!--登入情況下 username｜登出 -->
         <span class="navbar-text" v-if="loginStatus === true">
           <!--  -->
-          <router-link to="/login"> {{ name }} </router-link>
+          <a href=""> {{ name }} </a>
           <span class="line">|</span>
-          <a href="" @click="logout">登出</a>
+          <button class="logout" @click="logout">登出</button>
         </span>
         <!--未登入情況下 登入｜註冊 -->
         <span class="navbar-text" v-else>
@@ -108,6 +108,7 @@ pageHeader.vue
 </template>
 <script>
 export default {
+  emits: ["alreadylogout"],
   // props: ["user", "loginStatus"],
   data() {
     return {
@@ -125,17 +126,22 @@ export default {
 
   methods: {
     logout() {
-      this.axios.get("/logout").then((res) => {
-        if (res.data.logoutSuccess === 0) {
-          console.log("res測試", res.data.logoutSuccess);
-          alert("登出成功");
-          sessionStorage.removeItem("isLogin");
-          this.$router.push("/"); //跳轉完會再次跳回原頁 不知道為何
-          return;
-        } else {
-          console.log(err.message);
-        }
-      });
+      this.axios
+        .get("/logout")
+        .then((res) => {
+          if (res.data.logoutSuccess === 0) {
+            console.log("res測試", res.data.logoutSuccess);
+            alert("登出成功");
+            sessionStorage.removeItem("isLogin");
+            this.loginStatus === false;
+            this.$emit("alreadylogout");
+            this.$router.push("/"); //跳轉完會再次跳回原頁 不知道為何
+            return;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
 
     choose() {
@@ -205,9 +211,11 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 * {
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 .header-promotion {
@@ -307,5 +315,10 @@ input:focus {
   outline: var(--main-color4) 2px solid;
   -webkit-box-shadow: 0px 0px 9px 5px rgba(245, 207, 56, 0.3);
   box-shadow: 0px 0px 4px 2px rgba(245, 207, 56, 0.3);
+}
+
+.logout {
+  border: none;
+  background: none;
 }
 </style>

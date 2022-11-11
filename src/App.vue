@@ -1,13 +1,13 @@
 <template>
   <div class="wholePage sticky-footer">
     <div class="PageHeader">
-      <pageheader :key="componentKey"></pageheader>
+      <pageheader @alreadylogout="rerender" :key="componentKey"></pageheader>
       <!-- :user="name" :loginStatus="loginStatus" -->
       <!--  -->
     </div>
 
     <div class="container-bg">
-      <router-view @alreadylogin="rerender" :key="$route.fullPath" />
+      <router-view @alreadylogin="rerender" />
       <!-- v-on="{ alreadylogin: rerender, alreadydelete: shopCartRender }"
         :key="shopCartKey" -->
     </div>
