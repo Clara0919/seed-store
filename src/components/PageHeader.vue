@@ -29,9 +29,7 @@ pageHeader.vue
         <ul class="navbar-nav">
           <li class="nav-item">
             <router-link to="/">
-              <a class="nav-link active" aria-current="page"
-                >首頁</a
-              ></router-link
+              <a class="nav-link" aria-current="page">首頁</a></router-link
             >
           </li>
           <li class="nav-item">
@@ -91,7 +89,7 @@ pageHeader.vue
         <!--登入情況下 username｜登出 -->
         <span class="navbar-text" v-if="loginStatus === true">
           <!--  -->
-          <a href=""> {{ name }} </a>
+          <router-link :to="`/member/${id}`">{{ name }}</router-link>
           <span class="line">|</span>
           <button class="logout" @click="logout">登出</button>
         </span>
@@ -114,13 +112,14 @@ export default {
     return {
       name: "",
       loginStatus: "",
+      id: "",
       // title: [],
       products: [],
       matchProducts: [],
       keyword: "",
       // 用show 來控制是否顯示選單
       show: true,
-      selectedIndex: 0,
+      // selectedIndex: 0,
     };
   },
 
@@ -145,6 +144,7 @@ export default {
     },
 
     choose() {
+      this.keyword = "";
       return (this.show = false);
     },
     searchAgain() {
@@ -187,6 +187,7 @@ export default {
     this.axios.get("/getInfo").then((res) => {
       console.log(res);
       this.name = res.data.userName;
+      this.id = res.data.id;
       this.loginStatus = res.data.isLogin;
     });
     this.axios.get("/products").then((res) => {

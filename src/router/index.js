@@ -11,6 +11,7 @@ import Login from '../views/LoginView.vue'
 import SignUp from '../views/SignUpView.vue'
 import shopCart from '../views/shopCart.vue'
 import order from '../views/orderView.vue'
+import member from '../views/memberView.vue'
 
 const routes = [
   {
@@ -72,14 +73,15 @@ const routes = [
         next()
       }
     }
- 
- 
-
-
   },{
     path:'/order',
     name:'orderView',
     component:order
+  },
+  {
+    path: '/member/:id',
+    name: 'memberView',
+    component: member
   }
 ]
 
