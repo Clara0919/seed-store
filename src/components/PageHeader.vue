@@ -151,38 +151,7 @@ export default {
       return (this.show = true);
     },
   },
-  // computed: {
-  //   fullPath() {
-  //     return this.$route.fullPath;
-  //   },
-  // },
-  // watch: {
-  //   "$route.fullPath"() {
-  //     this.init();
-  //   },
-  // },
-  // methods: {
-  // init() {
-  //   const productInfo = JSON.parse(localStorage.getItem("products"));
-  //   productInfo.forEach((product) => {
-  //     if (product.id == this.$route.params.productId) {
-  //       this.id = product.id;
-  //       this.title = product.title;
-  //       this.category = product.category;
-  //       this.price = product.price;
-  //       this.seedAmount = product.seedAmount;
-  //       this.feature = product.feature;
-  //       this.seedingTime = product.seedingTime;
-  //       this.bhSeason = product.bhSeason;
-  //       this.temperature = product.temperature;
-  //       this.day = product.day;
-  //       this.img1 = product.img1;
-  //       this.img2 = product.img2;
-  //       this.img3 = product.img3;
-  //     }
-  //   });
-  // },
-  // },
+
   mounted() {
     this.axios.get("/getInfo").then((res) => {
       console.log(res);
@@ -256,11 +225,11 @@ nav {
 }
 
 .search input {
-  margin-left: 30px;
+  /* margin-left: 30px; */
   border-radius: 20px;
   border: solid 2px var(--main-color2);
   padding: 10px;
-  width: 250px;
+  max-width: 250px;
 }
 
 .search button {
