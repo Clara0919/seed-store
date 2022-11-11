@@ -119,7 +119,7 @@
   margin-top: 80px;
 }
 .panel1 {
-  background-image: url(../assets/banner/首頁banner-1.png);
+  background-image: url(../assets/banner/首頁banner-5.jpg);
 }
 .panel2 {
   background-image: url(../assets/banner/首頁banner-2.jpg);
