@@ -54,7 +54,7 @@ export default {
       password: "",
     };
   },
-  emits: ["alreadylogin"],
+  emits: ["alreadylogin"], //把 已登入的消息 emit 給外部使用
   methods: {
     postLogin() {
       this.axios
@@ -82,7 +82,6 @@ export default {
         });
     },
   },
-  mounted() {},
 };
 </script>
 <style scoped>

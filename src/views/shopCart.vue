@@ -27,28 +27,6 @@
               <td>{{ cartItem.title }}</td>
               <td>NT ${{ cartItem.price }}</td>
               <td>
-                <!-- <div class="quantity input-group">
-                  <button
-                    class="btn btn-default"
-                    @click="decrement(cartItem.id)"
-                  >
-                    -
-                  </button>
-
-                  <input
-                    class="number"
-                    type="number"
-                    min="1.00"
-                    :value="cartItem.cartItem.quantity"
-                  />
-
-                  <button
-                    class="btn btn-default"
-                    @click="increment(cartItem.id)"
-                  >
-                    +
-                  </button>
-                </div> -->
                 {{ cartItem.cartItem.quantity }}
               </td>
               <td>NT ${{ cartItem.price * cartItem.cartItem.quantity }}</td>
@@ -83,7 +61,6 @@
 </template>
 <script>
 export default {
-  // emits: ["alreadydelete"],
   data() {
     return {
       cart: [],
@@ -109,47 +86,17 @@ export default {
     deleteItem(id) {
       this.axios.post("/cart-delete-item", { productId: id }).then((res) => {
         console.log("刪除的品項", res);
-        // this.axios.get("cart").then((getRes) => {
-        //   console.log("getRes", getRes);
         window.location.reload(); //這個會重整畫面，導致後面的語法不會被執行
-        //this.$router.go(0); 這個應該就留在原地沒動作
-        // });
       });
     },
 
     ////送出訂單
     createOrder() {
-      this.axios.post("/create-order", { id: this.id }).then((res) => {
+      this.axios.post("/create-order").then((res) => {
         console.log(res);
         alert("已送出訂單");
       });
     },
-    // increment(id) {
-    //   this.axios
-    //     .post("/cart-add-item", { productId: id })
-    //     .then(() => {
-    //       console.log("imclata");
-    // this.cart = this.cart.map((item) => {
-    //   console.log(item);
-    //   if (item.data.id == id) {
-    //     item.data.cartItem.quantity++;
-    //   }
-    //   return item;
-    // });
-    // })
-    // .catch((err) => {
-    //   console.log("err" + err.message);
-    // });
-    // },
-    //   decrement(id) {
-    //     this.cart = this.cart.map((item) => {
-    //       if (item.id == id && item.quantity > 1) {
-    //         item.quantity--;
-    //       }
-    //       return item;
-    //     });
-    //     localStorage.setItem("cart", JSON.stringify(this.cart));
-    //   },
   },
 
   mounted() {

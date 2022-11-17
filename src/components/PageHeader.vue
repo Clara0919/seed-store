@@ -48,11 +48,6 @@ pageHeader.vue
           <li class="nav-item">
             <router-link to="/herb"><a class="nav-link">香草</a></router-link>
           </li>
-          <!-- <li class="nav-item">
-            <router-link to="/selected-category">
-              <a class="nav-link">園藝工具</a></router-link
-            >
-          </li> -->
         </ul>
       </div>
       <!-- 搜尋欄 -->
@@ -64,8 +59,8 @@ pageHeader.vue
             v-model.trim="keyword"
             @click="searchAgain"
           />
+          <!-- 點選後下面搜尋結果列表會消失，重新搜尋時點選搜尋鍵讓搜尋結果列表再次出現(控制 show) -->
           <ul class="result" :class="show ? '' : 'd-none'">
-            <!-- @click="clickEvent -->
             <li v-for="item in filterWord" :key="item.id" @click="choose">
               <!--  :class="selectedIndex == i ? 'bg-light' : ''" -->
               <router-link class="link" :to="`/product/${item.id}`"
@@ -107,19 +102,16 @@ pageHeader.vue
 <script>
 export default {
   emits: ["alreadylogout"],
-  // props: ["user", "loginStatus"],
+  //登出鍵在header上
   data() {
     return {
       name: "",
       loginStatus: "",
       id: "",
-      // title: [],
-      products: [],
-      matchProducts: [],
       keyword: "",
+      products: [], //搜尋功能使用
       // 用show 來控制是否顯示選單
       show: true,
-      // selectedIndex: 0,
     };
   },
 
@@ -129,12 +121,12 @@ export default {
         .get("/logout")
         .then((res) => {
           if (res.data.logoutSuccess === 0) {
-            console.log("res測試", res.data.logoutSuccess);
+            // console.log("res測試", res.data.logoutSuccess);
             alert("登出成功");
             sessionStorage.removeItem("isLogin");
             this.loginStatus === false;
             this.$emit("alreadylogout");
-            this.$router.push("/"); //跳轉完會再次跳回原頁 不知道為何
+            this.$router.push("/");
             return;
           }
         })
@@ -161,11 +153,7 @@ export default {
     });
     this.axios.get("/products").then((res) => {
       this.products = res.data.data;
-      // console.log(this.products);
-      // this.title = res.data.data.map((item) => item.title);
-      // console.log(this.title);
     });
-    // this.init();
   },
 
   computed: {

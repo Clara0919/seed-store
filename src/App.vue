@@ -2,12 +2,12 @@
   <div class="wholePage sticky-footer">
     <div class="PageHeader">
       <pageheader @alreadylogout="rerender" :key="componentKey"></pageheader>
-      <!-- :user="name" :loginStatus="loginStatus" -->
-      <!--  -->
+      <!-- 點擊登出後，emit alreadylogout到 App.vue-->
     </div>
 
     <div class="container-bg">
       <router-view @alreadylogin="rerender" :key="$route.fullPath" />
+      <!-- 在點擊login頁點登入後，emit alreadylogin 去改 header 的 componentKey-->
       <!-- :key="$route.fullPath" 進入商品頁後，點擊其他搜尋結果換頁-->
     </div>
 

@@ -4,21 +4,10 @@
     <div class="container-fluid">
       <div class="row justify-content-center p-0">
         <div class="col-11 flex-card">
-          <div class="panel active panel1">
-            <!-- <h3>Explore the World</h3> -->
-          </div>
-          <div class="panel panel2">
-            <!-- <h3>Wild Forest</h3> -->
-          </div>
-          <div class="panel panel3">
-            <!-- <h3>Sunny Beach</h3> -->
-          </div>
-          <div class="panel panel4">
-            <!-- <h3>City on Winter</h3> -->
-          </div>
-          <!-- <div class="panel panel5">
-             <h3>Mountains - Clouds</h3>
-          </div> -->
+          <div class="panel active panel1"></div>
+          <div class="panel panel2"></div>
+          <div class="panel panel3"></div>
+          <div class="panel panel4"></div>
         </div>
       </div>
     </div>
@@ -36,7 +25,7 @@
         <div class="col-lg-4 col-md-4 col-sm-10 img-box"></div>
 
         <!-- 標語在 md 尺寸以上的螢幕才顯示 -->
-        <div class="col-2 d-none d-md-block section-image-block title-lg">
+        <div class="col-2 d-none d-md-block title-lg">
           <img src="../assets/pic/lg-text.png" width="150" />
         </div>
         <!-- 內文 -->
@@ -65,6 +54,7 @@
       <div class="row justify-content-center">
         <div class="col-11 slick">
           <slickBeginner></slickBeginner>
+          <!-- 隨機挑8個植栽 -->
         </div>
       </div>
     </div>
@@ -80,6 +70,7 @@
         <div class="col-11 slick">
           <slickFlower></slickFlower>
         </div>
+        <!-- 隨機挑8個花 -->
       </div>
     </div>
   </div>
@@ -154,42 +145,28 @@
 .panel:last-child {
   margin-right: 0px;
 }
-/* .panel h3 {
-  font-size: 24px;
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  margin: 0px;
-  opacity: 0;
-} */
 .panel.active {
   flex: 7;
 }
-/* .panel.active h3 {
-  opacity: 1;
-  transition: opacity 0.3s ease-in 0.4s; */
-/* 如果沒有這一行的話，一點開標題就會出現，在背景展開的過程中，標題會從兩行變一行，加上這行後opacity會延遲0.4秒並用0.3秒的時間ease in */
-/* } */
+
 @media (max-width: 580px) {
   .flex-card {
     display: flex;
     margin-top: 40px;
     margin-bottom: -80px;
   }
-  .container {
-    width: 100vh;
-  }
+
+  /* 縮起來的幾張細一點 */
   .panel {
     height: 250px;
     flex: 0.5;
   }
-
+  /* 第一張寬一點 */
   .panel.active {
     flex: 11;
     border-radius: 15px;
   }
-  /* .panel:nth-of-type(3), */
-
+  /* 隱藏掉一張醜的 */
   .panel:nth-of-type(2) {
     display: none;
   }
@@ -272,6 +249,7 @@
   max-width: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  /*實現上滑圖片不動效果 */
   margin: 100px 0 50px;
   background-clip: content-box;
   /* 讓背景不要 overflow 到左右 12px 的 padding 上 */
@@ -336,12 +314,12 @@ export default {
   },
 
   mounted() {
-    let panels = document.querySelectorAll(".panel");
+    let panels = document.querySelectorAll(".panel"); //抓所有panel
 
     panels.forEach((panel) => {
       panel.addEventListener("click", () => {
-        removeActionClasses();
-        panel.classList.add("active");
+        removeActionClasses(); //點擊之後，先把所有.active都移掉
+        panel.classList.add("active"); //在點擊的那個panel加上 .active
       });
     });
 

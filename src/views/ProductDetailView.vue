@@ -230,39 +230,15 @@ export default {
         .then((response) => {
           console.log(response);
         });
-      // console.log(this.cart);
-      // let flag = false;
-      //先看購物車裡面有沒有同一件商品，有的話加上新數量
-      // this.cart = this.cart.map((item) => {
-      //   if (item.id == id) {
-      //     item.quantity = item.quantity + quantity;
-      //     flag = true;
-      //   }
-      //   return item;
-      // });
-      //購物車中沒有這項商品的話，加入這件商品的資訊
-      // if (!flag) {
-      //   this.cart.push({
-      //     id,
-      //     quantity,
-      //     title: this.title,
-      //     price: this.price,
-      //     category: this.category,
-      //     img1: this.img1,
-      //   });
-      // }
-      // localStorage.setItem("cart", JSON.stringify(this.cart));
-
       alert("已加入購物車");
       //console.log(this.cart);{id: 23, quantity: 3, title: '萵苣', price: 80, category: '蔬菜', …}
     },
   },
   mounted() {
-    // let vm = this;
     const productInfo = JSON.parse(localStorage.getItem("products"));
     // console.log(productInfo);
     productInfo.forEach((product) => {
-      if (product.id == this.$route.params.productId) {
+      if (product.id == this.$route.params.productId) {   //透過路由送過來的 id 參數對應商品的 id
         this.id = product.id;
         this.title = product.title;
         this.category = product.category;

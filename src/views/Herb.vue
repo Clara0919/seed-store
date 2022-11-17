@@ -108,13 +108,6 @@ export default {
   }
 }
 
-/* .banner-blur {
-  width: 100%;
-  height: 350px;
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(1px);
-} */
-
 /* 商品卡片 */
 
 .link {

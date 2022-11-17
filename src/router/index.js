@@ -2,7 +2,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
 import ProductDetail from '../views/ProductDetailView.vue'
-import SelectedCategory from '../views/SelectedCategory.vue'
 import Vegetable from '../views/Vegetable.vue'
 import Fruit from '../views/Fruit.vue'
 import Herb from '../views/Herb.vue'
@@ -18,11 +17,6 @@ const routes = [
     path: '/',
     name: 'homeView',
     component: Home
-  },
-  {
-    path: '/selected-category',
-    name: 'SelectedCategory',
-    component: SelectedCategory
   },
   {
     path: '/vegetable',
@@ -63,8 +57,8 @@ const routes = [
     path: '/shopCart',
     name: 'shopCart',
     component: shopCart,
-    beforeEnter: (to,from,next) => {
-    
+    beforeEnter: (to,from,next) => {  //進入購物車的路由守衛 如果sessionStorage裡面沒有isLogin的話，叫使用者先去登入
+
       if(!sessionStorage.getItem('isLogin')) {
         console.log('測試isLogin',sessionStorage.getItem('isLogin'))
         alert('請先登入')

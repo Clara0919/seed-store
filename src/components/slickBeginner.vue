@@ -37,7 +37,7 @@ export default {
   methods: {
     addCart(id) {
       this.axios
-        .post("/cart-add-item", { productId: id, quantity: 1 })
+        .post("/cart-add-item", { productId: id, quantity: 1 }) //這邊數量只能+1
         .then((response) => {
           console.log(response);
         });
